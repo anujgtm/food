@@ -103,10 +103,27 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
     }
   }, [currentActivity, pageCompletions, getAllExpectedPages, supabase])
 
-  // Start a new activity session
+  // Start a new activity session with anonymous authentication
   const startActivity = useCallback(async (): Promise<Activity | null> => {
     try {
-      const { data, error } = await supabase.from("activities").insert({}).select().single()
+      // Sign in anonymously first
+      const { data: authData, error: authError } = await supabase.auth.signInAnonymously()
+
+      if (authError) {
+        console.error("Error signing in anonymously:", authError)
+        return null
+      }
+
+      console.log("Signed in anonymously:", authData.user?.id)
+
+      // Now create the activity record
+      const { data, error } = await supabase
+        .from("activities")
+        .insert({
+          user_id: authData.user.id,
+        })
+        .select()
+        .single()
 
       if (error) {
         console.error("Error starting activity:", error)
@@ -114,10 +131,10 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
       }
 
       setCurrentActivity(data)
-      setCurrentSessionId(data.session_id)
+      setCurrentSessionId(authData.user.id) // Use the user ID as session ID
 
-      // Store the session ID in sessionStorage (not localStorage)
-      sessionStorage.setItem("currentSessionId", data.session_id)
+      // Store the user ID in sessionStorage
+      sessionStorage.setItem("currentSessionId", authData.user.id)
 
       return data
     } catch (error) {
@@ -518,22 +535,26 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
     const loadActivityData = async () => {
       setIsLoading(true)
 
-      // Check if we have a session ID in sessionStorage
-      const storedSessionId = sessionStorage.getItem("currentSessionId")
+      // Check if user is already authenticated
+      const {
+        data: { user },
+      } = await supabase.auth.getUser()
 
-      if (storedSessionId) {
-        // Try to load the existing activity
+      if (user) {
+        console.log("User already authenticated:", user.id)
+
+        // Try to load existing activity for this user using user_id field
         const { data: existingActivity } = await supabase
           .from("activities")
           .select("*")
-          .eq("session_id", storedSessionId)
+          .eq("user_id", user.id) // Use user_id field instead of session_id
           .single()
 
         if (existingActivity) {
           setCurrentActivity(existingActivity)
-          setCurrentSessionId(existingActivity.session_id)
+          setCurrentSessionId(user.id) // Use user.id as session ID
 
-          // Load activity items
+          // Load activity items and page completions...
           const { data: items } = await supabase
             .from("activity_items")
             .select("*")
@@ -543,7 +564,6 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
             setActivityItems(items)
           }
 
-          // Load page completions
           const { data: completions } = await supabase
             .from("page_completions")
             .select("*")
@@ -562,7 +582,7 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
         }
       }
 
-      // If no valid session found, start a new activity
+      // If no authenticated user or no existing activity, start a new one
       const activity = await startActivity()
 
       if (activity) {

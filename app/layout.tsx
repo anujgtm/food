@@ -14,7 +14,6 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Nutrition Quest",
   description: "Welcome to Foodtopia - Food Group Islands Adventure",
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({

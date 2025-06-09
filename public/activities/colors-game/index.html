@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruit Color Matching Game</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Arial", sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .game-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            color: #006400;
+            margin-bottom: 10px;
+        }
+
+        .game-board {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            gap: 20px;
+        }
+
+        .fruits-container,
+        .colors-container {
+            flex: 1;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #006400;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .fruit-items,
+        .color-items {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .fruit,
+        .color {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .fruit {
+            background-color: #f0f0f0;
+        }
+
+        .fruit.selected {
+            background-color: #d4edda;
+            border: 2px solid #28a745;
+        }
+
+        .fruit img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            margin-bottom: 8px;
+        }
+
+        .color-box {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+
+        .color.selected {
+            background-color: #d1ecf1;
+            border: 2px solid #17a2b8;
+        }
+
+        .matches-container {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .matches {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .match-item {
+            display: flex;
+            align-items: center;
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .match-item img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            margin-right: 10px;
+        }
+
+        .match-item .color-indicator {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-left: auto;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary {
+            background-color: #006400;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #004d00;
+        }
+
+        #check-btn {
+            background-color: #006400;
+            color: white;
+        }
+
+        #check-btn:hover {
+            background-color: #004d00;
+        }
+
+        #reset-btn {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        #reset-btn:hover {
+            background-color: #5a6268;
+        }
+
+        #complete-btn {
+            background-color: #006400;
+            color: white;
+            padding: 12px 24px;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+        }
+
+        #result-title {
+            margin-bottom: 15px;
+        }
+
+        #result-message {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        #result-details {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .correct {
+            color: #4caf50;
+        }
+
+        .incorrect {
+            color: #f44336;
+        }
+
+        .score-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .score-label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .score {
+            font-size: 24px;
+            font-weight: bold;
+            color: #006400;
+        }
+
+        .correct {
+            border: 2px solid #28a745 !important;
+        }
+
+        .incorrect {
+            border: 2px solid #dc3545 !important;
+        }
+
+        @media (max-width: 768px) {
+            .game-board {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <header>
+            <h1>Fruit Color Matching Game</h1>
+            <p>Match each fruit with its correct color!</p>
+        </header>
+        
+        <div class="game-board">
+            <div class="fruits-container">
+                <h2>Fruits</h2>
+                <div class="fruit-items">
+                    <div class="fruit" data-fruit="apple" draggable="true">
+                        <img src="/activities/colors-game/images/apple.png" alt="Apple">
+                        <span>Apple</span>
+                    </div>
+                    <div class="fruit" data-fruit="banana" draggable="true">
+                        <img src="/activities/colors-game/images/banana.png" alt="Banana">
+                        <span>Banana</span>
+                    </div>
+                    <div class="fruit" data-fruit="strawberry" draggable="true">
+                        <img src="/activities/colors-game/images/strawberry.png" alt="Strawberry">
+                        <span>Strawberry</span>
+                    </div>
+                    <div class="fruit" data-fruit="blueberry" draggable="true">
+                        <img src="/activities/colors-game/images/blueberry.png" alt="Blueberry">
+                        <span>Blueberry</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="colors-container">
+                <h2>Colors</h2>
+                <div class="color-items">
+                    <div class="color" data-color="red">
+                        <div class="color-box" style="background-color: #e74c3c;"></div>
+                        <span>Red</span>
+                    </div>
+                    <div class="color" data-color="yellow">
+                        <div class="color-box" style="background-color: #f1c40f;"></div>
+                        <span>Yellow</span>
+                    </div>
+                    <div class="color" data-color="blue">
+                        <div class="color-box" style="background-color: #3498db;"></div>
+                        <span>Blue</span>
+                    </div>
+                    <div class="color" data-color="green">
+                        <div class="color-box" style="background-color: #2ecc71;"></div>
+                        <span>Green</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="matches-container">
+            <h2>Your Matches</h2>
+            <div class="matches" id="matches-list">
+                <!-- Matches will be displayed here -->
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button id="check-btn" class="btn">Check Answers</button>
+            <button id="reset-btn" class="btn">Reset Game</button>
+        </div>
+        
+        <div id="result-modal" class="modal">
+            <div class="modal-content">
+                <h2 id="result-title">Great Job!</h2>
+                <p id="result-message">You matched 3 out of 4 fruits correctly!</p>
+                <div class="score-container">
+                    <div class="score-label">Your Score:</div>
+                    <div class="score" id="score-display">75%</div>
+                </div>
+                <button id="complete-btn" class="btn btn-primary">Complete Activity</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            console.log("Activity script loaded");
+            
+            // Game data
+            const fruitColors = {
+                apple: "red",
+                banana: "yellow",
+                strawberry: "red",
+                blueberry: "blue",
+            };
+
+            // Game state
+            let selectedFruit = null;
+            let selectedColor = null;
+            let matches = [];
+
+            // DOM elements
+            const fruits = document.querySelectorAll(".fruit");
+            const colors = document.querySelectorAll(".color");
+            const matchesList = document.getElementById("matches-list");
+            const checkBtn = document.getElementById("check-btn");
+            const resetBtn = document.getElementById("reset-btn");
+            const resultModal = document.getElementById("result-modal");
+            const resultTitle = document.getElementById("result-title");
+            const resultMessage = document.getElementById("result-message");
+            const scoreDisplay = document.getElementById("score-display");
+            const completeBtn = document.getElementById("complete-btn");
+
+            // Add event listeners to fruits
+            fruits.forEach((fruit) => {
+                fruit.addEventListener("click", () => {
+                    // Deselect previously selected fruit
+                    if (selectedFruit) {
+                        selectedFruit.classList.remove("selected");
+                    }
+
+                    // Select new fruit
+                    fruit.classList.add("selected");
+                    selectedFruit = fruit;
+
+                    // If both fruit and color are selected, create a match
+                    if (selectedColor) {
+                        createMatch();
+                    }
+                });
+            });
+
+            // Add event listeners to colors
+            colors.forEach((color) => {
+                color.addEventListener("click", () => {
+                    // Deselect previously selected color
+                    if (selectedColor) {
+                        selectedColor.classList.remove("selected");
+                    }
+
+                    // Select new color
+                    color.classList.add("selected");
+                    selectedColor = color;
+
+                    // If both fruit and color are selected, create a match
+                    if (selectedFruit) {
+                        createMatch();
+                    }
+                });
+            });
+
+            // Create a match between selected fruit and color
+            function createMatch() {
+                const fruitName = selectedFruit.dataset.fruit;
+                const colorName = selectedColor.dataset.color;
+                const fruitImg = selectedFruit.querySelector("img").src;
+                const colorStyle = selectedColor.querySelector(".color-box").style.backgroundColor;
+
+                // Check if this fruit is already matched
+                const existingMatchIndex = matches.findIndex((match) => match.fruit === fruitName);
+
+                if (existingMatchIndex !== -1) {
+                    // Update existing match
+                    matches[existingMatchIndex] = { fruit: fruitName, color: colorName };
+                } else {
+                    // Create new match
+                    matches.push({ fruit: fruitName, color: colorName });
+                }
+
+                // Reset selections
+                selectedFruit.classList.remove("selected");
+                selectedColor.classList.remove("selected");
+                selectedFruit = null;
+                selectedColor = null;
+
+                // Update matches display
+                updateMatchesDisplay();
+            }
+
+            // Update the matches display
+            function updateMatchesDisplay() {
+                matchesList.innerHTML = "";
+
+                matches.forEach((match) => {
+                    const matchItem = document.createElement("div");
+                    matchItem.className = "match-item";
+
+                    const fruitElement = document.querySelector(`.fruit[data-fruit="${match.fruit}"]`);
+                    const colorElement = document.querySelector(`.color[data-color="${match.color}"]`);
+
+                    const fruitImg = fruitElement.querySelector("img").src;
+                    const colorStyle = colorElement.querySelector(".color-box").style.backgroundColor;
+
+                    matchItem.innerHTML = `
+                        <img src="${fruitImg}" alt="${match.fruit}">
+                        <span>${match.fruit}</span>
+                        <div class="color-indicator" style="background-color: ${colorStyle};"></div>
+                    `;
+
+                    matchesList.appendChild(matchItem);
+                });
+            }
+
+            // Check answers
+            checkBtn.addEventListener("click", () => {
+                // Check if all fruits are matched
+                if (matches.length < fruits.length) {
+                    alert("Please match all fruits before checking your answers!");
+                    return;
+                }
+
+                let correctMatches = 0;
+
+                // Check each match
+                matches.forEach((match) => {
+                    if (fruitColors[match.fruit] === match.color) {
+                        correctMatches++;
+                    }
+                });
+
+                // Calculate score
+                const score = Math.round((correctMatches / fruits.length) * 100);
+
+                // Update result modal
+                if (score === 100) {
+                    resultTitle.textContent = "Perfect Score!";
+                    resultMessage.textContent = "You matched all fruits correctly!";
+                } else if (score >= 75) {
+                    resultTitle.textContent = "Great Job!";
+                    resultMessage.textContent = `You matched ${correctMatches} out of ${fruits.length} fruits correctly!`;
+                } else if (score >= 50) {
+                    resultTitle.textContent = "Good Try!";
+                    resultMessage.textContent = `You matched ${correctMatches} out of ${fruits.length} fruits correctly!`;
+                } else {
+                    resultTitle.textContent = "Keep Practicing!";
+                    resultMessage.textContent = `You matched ${correctMatches} out of ${fruits.length} fruits correctly!`;
+                }
+
+                scoreDisplay.textContent = `${score}%`;
+
+                // Show result modal
+                resultModal.classList.add("show");
+            });
+
+            // Reset game
+            resetBtn.addEventListener("click", () => {
+                // Clear selections
+                if (selectedFruit) {
+                    selectedFruit.classList.remove("selected");
+                    selectedFruit = null;
+                }
+
+                if (selectedColor) {
+                    selectedColor.classList.remove("selected");
+                    selectedColor = null;
+                }
+
+                // Clear matches
+                matches = [];
+                updateMatchesDisplay();
+            });
+
+            // Complete activity
+            completeBtn.addEventListener("click", () => {
+                // Calculate final score
+                let correctMatches = 0;
+                matches.forEach((match) => {
+                    if (fruitColors[match.fruit] === match.color) {
+                        correctMatches++;
+                    }
+                });
+
+                const score = Math.round((correctMatches / fruits.length) * 100);
+
+                // Send completion message to parent window
+                window.parent.postMessage(
+                    {
+                        type: "activity-complete",
+                        score: score,
+                    },
+                    "*"
+                );
+
+                // Hide modal
+                resultModal.classList.remove("show");
+            });
+
+            // Notify parent that activity is loaded
+            console.log("Sending activity-loaded message to parent");
+            window.parent.postMessage(
+                {
+                    type: "activity-loaded",
+                },
+                "*"
+            );
+        });
+    </script>
+</body>
+</html>

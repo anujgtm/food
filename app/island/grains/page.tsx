@@ -1,19 +1,20 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
 import TopMenuBar from "@/components/top-menu-bar"
 import { useActivity } from "@/context/activity-context"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 
 export default function GrainsIsland() {
   const [isAuthorized, setIsAuthorized] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [allActivitiesCompleted, setAllActivitiesCompleted] = useState(false)
   const router = useRouter()
-  const { activityItems, startActivityItem, currentSessionId } = useActivity()
+  const { activityItems, startActivityItem, currentSessionId, markAllActivitiesCompleted } = useActivity()
+  const hasRecordedVisit = useRef(false)
+  const hasMarkedComplete = useRef(false)
 
   useEffect(() => {
     // Check if user has completed required activities on the previous island
@@ -97,11 +98,24 @@ export default function GrainsIsland() {
     // Redirect if not authorized
     if (!canAccess && !isLoading) {
       router.push("/island/fruit-vegetables")
-    } else if (canAccess) {
-      // Record visit to this page
+    }
+  }, [activityItems, router, isLoading])
+
+  // Record page visit when user is authorized
+  useEffect(() => {
+    if (isAuthorized && !hasRecordedVisit.current && currentSessionId) {
+      hasRecordedVisit.current = true
       startActivityItem("grains", "page-visit", "grains-visit")
     }
-  }, [activityItems, router, isLoading, startActivityItem])
+  }, [isAuthorized, currentSessionId, startActivityItem])
+
+  // Mark page as completed when all activities are done
+  useEffect(() => {
+    if (allActivitiesCompleted && !hasMarkedComplete.current) {
+      hasMarkedComplete.current = true
+      markAllActivitiesCompleted("grains")
+    }
+  }, [allActivitiesCompleted, markAllActivitiesCompleted])
 
   const handleWatchClick = async () => {
     // Start tracking the video activity

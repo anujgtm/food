@@ -1,19 +1,20 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
 import TopMenuBar from "@/components/top-menu-bar"
 import { useActivity } from "@/context/activity-context"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 
 export default function MilkIsland() {
   const [isAuthorized, setIsAuthorized] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [allActivitiesCompleted, setAllActivitiesCompleted] = useState(false)
   const router = useRouter()
-  const { activityItems, startActivityItem, currentSessionId } = useActivity()
+  const { activityItems, startActivityItem, currentSessionId, markAllActivitiesCompleted } = useActivity()
+  const hasRecordedVisit = useRef(false)
+  const hasMarkedComplete = useRef(false)
 
   useEffect(() => {
     // Check if user has completed required activities on the previous island
@@ -90,11 +91,24 @@ export default function MilkIsland() {
     // Redirect if not authorized
     if (!canAccess && !isLoading) {
       router.push("/island/grains")
-    } else if (canAccess) {
-      // Record visit to this page
+    }
+  }, [activityItems, router, isLoading])
+
+  // Record page visit when user is authorized
+  useEffect(() => {
+    if (isAuthorized && !hasRecordedVisit.current && currentSessionId) {
+      hasRecordedVisit.current = true
       startActivityItem("milk", "page-visit", "milk-visit")
     }
-  }, [activityItems, router, isLoading, startActivityItem])
+  }, [isAuthorized, currentSessionId, startActivityItem])
+
+  // Mark page as completed when all activities are done
+  useEffect(() => {
+    if (allActivitiesCompleted && !hasMarkedComplete.current) {
+      hasMarkedComplete.current = true
+      markAllActivitiesCompleted("milk")
+    }
+  }, [allActivitiesCompleted, markAllActivitiesCompleted])
 
   const handleWatchClick = async () => {
     // Start tracking the video activity
@@ -145,15 +159,16 @@ export default function MilkIsland() {
 
             <div className="w-3/4 pl-8 pb-6">
               <p className="text-dark font-extralight mb-4">
-                Welcome to Milk Products Island, it's here that we make our members sturdy and powerful by providing them
-                with calcium for strong bones and feeding them delicious food and drinks.
+                Welcome to Milk Products Island, it's here that we make our members sturdy and powerful by providing
+                them with calcium for strong bones and feeding them delicious food and drinks.
               </p>
               <p className="text-dark font-extralight mb-4">
                 Complete the missions around the island, as you go, make sure to keep an eye out for the sources of
                 goodness that are scattered across the island.
               </p>
               <p className="text-dark font-extralight mb-4">
-                If you pass the Mental Workout Challenge, you will receive the island's token that will prove to anyone that you are a Calcium Champion.
+                If you pass the Mental Workout Challenge, you will receive the island's token that will prove to anyone
+                that you are a Calcium Champion.
               </p>
               <p className="text-dark font-black">Choose an activity to complete.</p>
             </div>

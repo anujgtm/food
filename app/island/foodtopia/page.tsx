@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
@@ -12,7 +12,9 @@ export default function FoodtopiaIsland() {
   const [isLoading, setIsLoading] = useState(true)
   const [allActivitiesCompleted, setAllActivitiesCompleted] = useState(false)
   const router = useRouter()
-  const { activityItems, startActivityItem } = useActivity()
+  const { activityItems, startActivityItem, markAllActivitiesCompleted } = useActivity()
+  const hasRecordedVisit = useRef(false)
+  const hasMarkedComplete = useRef(false)
 
   useEffect(() => {
     // Check if user has completed required activities on the previous island
@@ -100,11 +102,24 @@ export default function FoodtopiaIsland() {
     // Redirect if not authorized
     if (!canAccess && !isLoading) {
       router.push("/island/protein")
-    } else if (canAccess) {
-      // Record visit to this page
+    }
+  }, [activityItems, router, isLoading])
+
+  // Record page visit when user is authorized
+  useEffect(() => {
+    if (isAuthorized && !hasRecordedVisit.current) {
+      hasRecordedVisit.current = true
       startActivityItem("foodtopia", "page-visit", "foodtopia-visit")
     }
-  }, [activityItems, router, isLoading, startActivityItem])
+  }, [isAuthorized, startActivityItem])
+
+  // Mark page as completed when all activities are done
+  useEffect(() => {
+    if (allActivitiesCompleted && !hasMarkedComplete.current) {
+      hasMarkedComplete.current = true
+      markAllActivitiesCompleted("foodtopia")
+    }
+  }, [allActivitiesCompleted, markAllActivitiesCompleted])
 
   if (isLoading) {
     return (
@@ -149,8 +164,8 @@ export default function FoodtopiaIsland() {
             <div className="w-3/4 pl-8 pb-6">
               <p className="text-dark font-extralight mb-4">
                 Welcome to Foodtopia. Before you travel to the Castle, it's important you prove that you have the
-                knowledge from the four food group islands so you can defeat the Sneaky Snail and help fix the
-                food transportation device.
+                knowledge from the four food group islands so you can defeat the Sneaky Snail and help fix the food
+                transportation device.
               </p>
               <p className="text-dark font-extralight mb-4">
                 To prove you are worthy, you must help out around the island. There are four activities for you to

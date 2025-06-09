@@ -1,19 +1,20 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
 import TopMenuBar from "@/components/top-menu-bar"
 import { useActivity } from "@/context/activity-context"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 
 export default function FruitVegetablesIsland() {
   const [isAuthorized, setIsAuthorized] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [allActivitiesCompleted, setAllActivitiesCompleted] = useState(false)
+  const hasRecordedVisit = useRef(false)
+  const hasMarkedComplete = useRef(false)
   const router = useRouter()
-  const { activityItems, startActivityItem, currentSessionId } = useActivity()
+  const { activityItems, startActivityItem, currentSessionId, markAllActivitiesCompleted } = useActivity()
 
   useEffect(() => {
     // Check if user has completed required activities on the home page
@@ -70,11 +71,24 @@ export default function FruitVegetablesIsland() {
     // Redirect if not authorized
     if (!canAccess && !isLoading) {
       router.push("/")
-    } else if (canAccess) {
-      // Record visit to this page
+    }
+  }, [activityItems, router, isLoading])
+
+  // Record page visit only once when authorized
+  useEffect(() => {
+    if (isAuthorized && !hasRecordedVisit.current && !isLoading) {
+      hasRecordedVisit.current = true
       startActivityItem("fruit-vegetables", "page-visit", "fruit-vegetables-visit")
     }
-  }, [activityItems, router, isLoading, startActivityItem])
+  }, [isAuthorized, isLoading, startActivityItem])
+
+  // Mark page as completed when all activities are done
+  useEffect(() => {
+    if (allActivitiesCompleted && !hasMarkedComplete.current) {
+      hasMarkedComplete.current = true
+      markAllActivitiesCompleted("fruit-vegetables")
+    }
+  }, [allActivitiesCompleted, markAllActivitiesCompleted])
 
   const handleWatchClick = async () => {
     // Start tracking the video activity
@@ -103,7 +117,7 @@ export default function FruitVegetablesIsland() {
     <main className="min-h-screen bg-black text-white flex flex-col items-center">
       <div className="w-full max-w-5xl mx-auto">
         {/* Top navigation bar */}
-        <TopMenuBar/>
+        <TopMenuBar />
 
         {/* Island header section */}
         <div className="relative w-full bg-gradient-to-r from-[#c8e6c9] to-[#b2ebf2] rounded-b-md overflow-hidden">
@@ -311,7 +325,6 @@ export default function FruitVegetablesIsland() {
           </TooltipProvider>
         </div>
         */}
-
       </div>
     </main>
   )

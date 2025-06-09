@@ -2,9 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import Image from "next/image"
 import { useActivity } from "@/context/activity-context"
-import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { CheckCircle } from "lucide-react"
@@ -15,7 +13,7 @@ export default function FoodtopiaFinalChallengeActivity() {
   const [isCompleted, setIsCompleted] = useState(false)
   const [activityReady, setActivityReady] = useState(false)
   const [quizScore, setQuizScore] = useState<number | null>(null)
-  const { activityItems, completeActivityItem } = useActivity()
+  const { activityItems, completeActivityItem, completeActivity } = useActivity()
 
   useEffect(() => {
     // Find the activity item for this quiz
@@ -38,6 +36,9 @@ export default function FoodtopiaFinalChallengeActivity() {
       await completeActivityItem(activityItemId, finalScore, { completed: true })
       setQuizScore(finalScore)
       setIsCompleted(true)
+
+      // Mark the entire activity as complete since this is the final challenge
+      await completeActivity()
     }
   }
 
@@ -65,9 +66,7 @@ export default function FoodtopiaFinalChallengeActivity() {
       <div className="w-full max-w-5xl mx-auto p-4">
         <div className="flex justify-between items-center w-full mb-8">
           <Link href="/island/foodtopia">
-            <button className="bg-[#333] text-light px-4 py-2 rounded-md font-black btn-rounded">
-              Back to Island
-            </button>
+            <button className="bg-[#333] text-light px-4 py-2 rounded-md font-black btn-rounded">Back to Island</button>
           </Link>
           <div className="relative h-10 w-16">
             {/*

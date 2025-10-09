@@ -415,14 +415,30 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
   const completeActivityItem = useCallback(
     async (itemId: number, score?: number, data?: any): Promise<void> => {
       try {
+        
+        const updatePayload = {
+          completed_at: new Date().toISOString(),
+          is_completed: true,
+          score: score || null,
+          data: data || null,
+        } as {
+          completed_at: string;
+          is_completed: boolean;
+          score: number | null;
+          data: any;
+          how_many_students?: string | null;
+          completing_activity_from?: string | null;
+        };
+        
+        // Safely assign the responses to specific columns
+        if (Array.isArray(data?.responses)) {
+          updatePayload.how_many_students = data.responses[0]?.textAnswer || null;
+          updatePayload.completing_activity_from = data.responses[1]?.textAnswer || null;
+        }
+
         const { error } = await supabase
           .from("activity_items")
-          .update({
-            completed_at: new Date().toISOString(),
-            is_completed: true,
-            score: score || null,
-            data: data || null,
-          })
+          .update(updatePayload)
           .eq("id", itemId)
 
         if (error) {

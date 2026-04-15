@@ -1,6 +1,14 @@
 "use client"
 
-import { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from "react"
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+  type ReactNode,
+} from "react"
 import { getSupabaseBrowserClient } from "@/lib/supabase"
 import type { Activity, ActivityItem, PageCompletion } from "@/types/database"
 import { useRouter, usePathname } from "next/navigation"
@@ -31,6 +39,8 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
   const [pageCompletions, setPageCompletions] = useState<Record<string, boolean>>({})
   const [isLoading, setIsLoading] = useState(true)
   const [pendingItems, setPendingItems] = useState<Set<string>>(new Set())
+  /** Same tick + Strict Mode: React state pending set is async — dedupe in-flight starts here. */
+  const startActivityItemInflightRef = useRef<Map<string, Promise<ActivityItem | null>>>(new Map())
   const supabase = getSupabaseBrowserClient()
   const router = useRouter()
   const pathname = usePathname()
@@ -300,86 +310,93 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
     async (pageSlug: string, itemType: string, itemName: string): Promise<ActivityItem | null> => {
       if (!currentActivity) return null
 
-      // Create a unique key to prevent duplicate requests
       const itemKey = `${currentActivity.id}-${pageSlug}-${itemType}-${itemName}`
 
-      // Check if this item is already being processed
-      if (pendingItems.has(itemKey)) {
-        console.log("Item already being processed:", itemKey)
-        return null
-      }
+      const inflight = startActivityItemInflightRef.current.get(itemKey)
+      if (inflight) return inflight
 
-      try {
-        // Mark as pending
-        setPendingItems((prev) => new Set(prev).add(itemKey))
+      const run = (async (): Promise<ActivityItem | null> => {
+        try {
+          setPendingItems((prev) => new Set(prev).add(itemKey))
 
-        // Check if an activity item with the same properties already exists
-        const existingItem = activityItems.find(
-          (item) =>
-            item.activity_id === currentActivity.id &&
-            item.page_slug === pageSlug &&
-            item.item_type === itemType &&
-            item.item_name === itemName,
-        )
+          const existingItem = activityItems.find(
+            (item) =>
+              item.activity_id === currentActivity.id &&
+              item.page_slug === pageSlug &&
+              item.item_type === itemType &&
+              item.item_name === itemName,
+          )
 
-        // If an item already exists, return it without creating a new one
-        if (existingItem) {
+          if (existingItem) {
+            setPendingItems((prev) => {
+              const newSet = new Set(prev)
+              newSet.delete(itemKey)
+              return newSet
+            })
+            return existingItem
+          }
+
+          const { data: dbExistingItems } = await supabase
+            .from("activity_items")
+            .select("*")
+            .eq("activity_id", currentActivity.id)
+            .eq("page_slug", pageSlug)
+            .eq("item_type", itemType)
+            .eq("item_name", itemName)
+
+          if (dbExistingItems && dbExistingItems.length > 0) {
+            const existingDbItem = dbExistingItems[0]
+            setActivityItems((prev) => {
+              const filtered = prev.filter(
+                (item) =>
+                  !(
+                    item.activity_id === existingDbItem.activity_id &&
+                    item.page_slug === existingDbItem.page_slug &&
+                    item.item_type === existingDbItem.item_type &&
+                    item.item_name === existingDbItem.item_name
+                  ),
+              )
+              return [...filtered, existingDbItem]
+            })
+
+            setPendingItems((prev) => {
+              const newSet = new Set(prev)
+              newSet.delete(itemKey)
+              return newSet
+            })
+            return existingDbItem
+          }
+
+          const newItem = {
+            activity_id: currentActivity.id,
+            page_slug: pageSlug,
+            item_type: itemType,
+            item_name: itemName,
+          }
+
+          const { data, error } = await supabase.from("activity_items").insert(newItem).select().single()
+
+          if (error) {
+            console.error("Error starting activity item:", error)
+            setPendingItems((prev) => {
+              const newSet = new Set(prev)
+              newSet.delete(itemKey)
+              return newSet
+            })
+            return null
+          }
+
+          setActivityItems((prev) => [...prev, data])
+
           setPendingItems((prev) => {
             const newSet = new Set(prev)
             newSet.delete(itemKey)
             return newSet
           })
-          return existingItem
-        }
 
-        // Check database for existing item (in case local state is out of sync)
-        const { data: dbExistingItems } = await supabase
-          .from("activity_items")
-          .select("*")
-          .eq("activity_id", currentActivity.id)
-          .eq("page_slug", pageSlug)
-          .eq("item_type", itemType)
-          .eq("item_name", itemName)
-
-        if (dbExistingItems && dbExistingItems.length > 0) {
-          const existingDbItem = dbExistingItems[0]
-          // Update local state with the existing item
-          setActivityItems((prev) => {
-            const filtered = prev.filter(
-              (item) =>
-                !(
-                  item.activity_id === existingDbItem.activity_id &&
-                  item.page_slug === existingDbItem.page_slug &&
-                  item.item_type === existingDbItem.item_type &&
-                  item.item_name === existingDbItem.item_name
-                ),
-            )
-            return [...filtered, existingDbItem]
-          })
-
-          setPendingItems((prev) => {
-            const newSet = new Set(prev)
-            newSet.delete(itemKey)
-            return newSet
-          })
-          return existingDbItem
-        }
-
-        // Create a new activity item
-        const newItem = {
-          activity_id: currentActivity.id,
-          page_slug: pageSlug,
-          item_type: itemType,
-          item_name: itemName,
-        }
-
-        // Page visits are NOT marked as completed immediately
-        // They will be completed when all other activities on the page are done
-
-        const { data, error } = await supabase.from("activity_items").insert(newItem).select().single()
-
-        if (error) {
-          console.error("Error starting activity item:", error)
+          return data
+        } catch (error) {
+          console.error("Error in startActivityItem:", error)
           setPendingItems((prev) => {
             const newSet = new Set(prev)
             newSet.delete(itemKey)
@@ -387,26 +404,14 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
           })
           return null
         }
+      })()
 
-        setActivityItems((prev) => [...prev, data])
+      startActivityItemInflightRef.current.set(itemKey, run)
+      void run.finally(() => {
+        startActivityItemInflightRef.current.delete(itemKey)
+      })
 
-        // Remove from pending
-        setPendingItems((prev) => {
-          const newSet = new Set(prev)
-          newSet.delete(itemKey)
-          return newSet
-        })
-
-        return data
-      } catch (error) {
-        console.error("Error in startActivityItem:", error)
-        setPendingItems((prev) => {
-          const newSet = new Set(prev)
-          newSet.delete(itemKey)
-          return newSet
-        })
-        return null
-      }
+      return run
     },
     [currentActivity, activityItems, pendingItems, supabase],
   )
@@ -428,12 +433,14 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
           data: any;
           how_many_students?: string | null;
           completing_activity_from?: string | null;
+          school_name?: string | null;
         };
         
         // Safely assign the responses to specific columns
         if (Array.isArray(data?.responses)) {
           updatePayload.how_many_students = data.responses[0]?.textAnswer || null;
           updatePayload.completing_activity_from = data.responses[1]?.textAnswer || null;
+          updatePayload.school_name = data.responses[2]?.textAnswer || null;
         }
 
         const { error } = await supabase
@@ -550,6 +557,21 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     const loadActivityData = async () => {
       setIsLoading(true)
+
+      // Hard refresh on home only: abandon current anon session and start fresh (new quiz).
+      // Client-side navigation to / does not remount this provider — this block does not run.
+      if (typeof window !== "undefined") {
+        const path = window.location.pathname
+        const nav = performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming | undefined
+        if (path === "/" && nav?.type === "reload") {
+          await supabase.auth.signOut()
+          sessionStorage.removeItem("currentSessionId")
+          setCurrentActivity(null)
+          setCurrentSessionId(null)
+          setActivityItems([])
+          setPageCompletions({})
+        }
+      }
 
       // Check if user is already authenticated
       const {

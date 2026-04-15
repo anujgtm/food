@@ -15,4 +15,11 @@ export const initialQuizQuestions: QuizQuestion[] = [
     options: ["Home", "School"],
     correctAnswer: -1, // "Yes" is the correct answer
   },
+  {
+    id: 3,
+    question: "What is your school name?",
+    type: "text",
+    options: [],
+    correctAnswer: -1, // Not applicable for text input
+  },
 ]

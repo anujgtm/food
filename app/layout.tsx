@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Poppins } from "next/font/google"
 import { ActivityProvider } from "@/context/activity-context"
+import { DevLogGuard } from "@/components/dev-log-guard"
 import "./globals.css"
 
 // Load Poppins font with multiple weights
@@ -24,6 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppins.variable} font-sans`}>
+        <DevLogGuard />
         <ActivityProvider>{children}</ActivityProvider>
       </body>
     </html>

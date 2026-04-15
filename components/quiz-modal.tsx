@@ -29,33 +29,29 @@ export function QuizModal({ onComplete }: QuizModalProps) {
   const currentQuestion = questions[currentQuestionIndex]
 
   useEffect(() => {
-    // Prevent multiple initializations
     if (initRef.current) return
+    // Before any await: effect can re-fire when activityItems updates (insert) or Strict Mode remounts
+    initRef.current = true
 
     const initQuiz = async () => {
-      // Check if we already have an initial quiz activity item for this session
       const existingQuizItem = activityItems.find(
         (item) => item.item_type === "quiz" && item.item_name === "initial-quiz",
       )
 
       if (existingQuizItem) {
-        // If we have an existing item that's not completed, use it
         if (!existingQuizItem.is_completed) {
           setActivityItemId(existingQuizItem.id)
         }
         return
       }
 
-      // Only create a new activity item if one doesn't exist
       const activityItem = await startActivityItem("home", "quiz", "initial-quiz")
       if (activityItem) {
         setActivityItemId(activityItem.id)
       }
-
-      initRef.current = true
     }
 
-    initQuiz()
+    void initQuiz()
   }, [startActivityItem, activityItems])
 
   const handleOptionSelect = (optionIndex: number) => {

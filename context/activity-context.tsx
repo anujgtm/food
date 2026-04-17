@@ -438,9 +438,7 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
         
         // Safely assign the responses to specific columns
         if (Array.isArray(data?.responses)) {
-          updatePayload.how_many_students = data.responses[0]?.textAnswer || null;
-          updatePayload.completing_activity_from = data.responses[1]?.textAnswer || null;
-          updatePayload.school_name = data.responses[2]?.textAnswer || null;
+          updatePayload.school_name = data.responses[0]?.textAnswer || null;
         }
 
         const { error } = await supabase

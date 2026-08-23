@@ -82,11 +82,11 @@ export default function ProteinDragDropActivity() {
         </div>
 
         <div className="bg-beige rounded-md p-8 text-dark">
-          <h1 className="text-4xl font-black mb-6">Drag and Drop Activity</h1>
+          <h1 className="text-4xl font-black mb-6">Protein Sorter</h1>
 
           <Card className="mb-8 shadcn-card">
             <CardHeader>
-              <CardTitle className="text-dark font-black">Protein Sorter</CardTitle>
+              <CardTitle className="text-dark font-black">Drag and Drop Activity</CardTitle>
             </CardHeader>
             <CardContent>
               <IframeActivity

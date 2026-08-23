@@ -221,7 +221,7 @@ export default function MilkIsland() {
           {/* Activity 2 */}
           <div className="flex justify-between items-center bg-[#f5f5f5] rounded-md p-4 border border-gray-200 mb-4">
             <div className="w-1/2">
-              <h3 className="text-dark font-black text-xl">Milk Choices</h3>
+              <h3 className="text-dark font-black text-xl">Milky Choices</h3>
               <p className="text-dark font-black text-xl">Tōtaka</p>
             </div>
 

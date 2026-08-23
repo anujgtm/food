@@ -31,7 +31,7 @@ export function IframeActivity({
         try {
           const data = event.data
           if (onMessage) {
-            onMessage(data)
+            onMessage(data);
           }
 
           // Auto-complete if the message indicates completion

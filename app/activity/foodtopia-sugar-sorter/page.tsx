@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { useActivity } from "@/context/activity-context"
@@ -16,6 +16,15 @@ export default function FoodtopiaSugarSorterActivity() {
   const [activityReady, setActivityReady] = useState(false)
   const [score, setScore] = useState<number | null>(null)
   const { activityItems, completeActivityItem } = useActivity()
+
+  const targetRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    targetRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }, []);
 
   useEffect(() => {
     // Find the activity item for this game
@@ -84,7 +93,7 @@ export default function FoodtopiaSugarSorterActivity() {
         <div className="bg-beige rounded-md p-8 text-dark">
           <h1 className="text-4xl font-black mb-6">Sugar Sorter Showdown</h1>
 
-          <Card className="mb-8 shadcn-card">
+          <Card className="mb-8 shadcn-card" ref={targetRef}>
             <CardHeader>
               <CardTitle className="text-dark font-black">Learn about Sugar in Drinks</CardTitle>
             </CardHeader>

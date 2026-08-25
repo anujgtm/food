@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { useActivity } from "@/context/activity-context"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -14,6 +14,15 @@ export default function FoodtopiaFinalChallengeActivity() {
   const [activityReady, setActivityReady] = useState(false)
   const [quizScore, setQuizScore] = useState<number | null>(null)
   const { activityItems, completeActivityItem, completeActivity } = useActivity()
+
+  const targetRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    targetRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }, []);
 
   useEffect(() => {
     // Find the activity item for this quiz
@@ -83,7 +92,7 @@ export default function FoodtopiaFinalChallengeActivity() {
         <div className="bg-beige rounded-md p-8 text-dark">
           <h1 className="text-4xl font-black mb-6">The Final Challenge</h1>
 
-          <Card className="mb-8 shadcn-card">
+          <Card className="mb-8 shadcn-card" ref={targetRef}>
             <CardHeader>
               <CardTitle className="text-dark font-black">Test Your Knowledge of All Food Groups</CardTitle>
             </CardHeader>

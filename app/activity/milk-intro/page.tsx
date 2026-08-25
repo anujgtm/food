@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { useActivity } from "@/context/activity-context"
@@ -15,6 +15,15 @@ export default function MilkIntroPage() {
   const [isCompleted, setIsCompleted] = useState(false)
   const [videoReady, setVideoReady] = useState(false)
   const { activityItems, completeActivityItem, currentSessionId } = useActivity()
+
+  const targetRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    targetRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }, []);
 
   useEffect(() => {
     if (!currentSessionId) return
@@ -81,7 +90,7 @@ export default function MilkIntroPage() {
         <div className="bg-beige rounded-md p-8 text-dark">
           <h1 className="text-4xl font-black mb-6">Milk Products Introduction Video</h1>
 
-          <Card className="mb-8 shadcn-card">
+          <Card className="mb-8 shadcn-card" ref={targetRef}>
             <CardHeader>
               <CardTitle className="text-dark font-black">Learn About Milk Products</CardTitle>
             </CardHeader>

@@ -121,8 +121,8 @@ export default function FruitVegetablesIsland() {
         <TopMenuBar />
 
         {/* Island header section */}
-        <div className="relative w-full bg-gradient-to-r from-[#c8e6c9] to-[#b2ebf2] rounded-b-md overflow-hidden">
-          <img src="/images/2_fruitNvegBanner.png" />
+        <div className="relative w-full bg-[#0C5F0F] rounded-b-md overflow-hidden pt-4">
+          <img src="/images/FruitAndVegetablesIsland_Header.png" />
         </div>
 
         {/* Guardian introduction */}

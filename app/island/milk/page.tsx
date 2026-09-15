@@ -141,8 +141,8 @@ export default function MilkIsland() {
         <TopMenuBar />
 
         {/* Island header section */}
-        <div className="relative w-full bg-gradient-to-r from-[#c8e6c9] to-[#b2ebf2] rounded-b-md overflow-hidden">
-          <img src="/images/4_milkBannerv2.png" />
+        <div className="relative w-full bg-[#0B4474] rounded-b-md overflow-hidden pt-4">
+          <img src="/images/MilkProductsIsland_Header.png" />
         </div>
 
         {/* Guardian introduction */}

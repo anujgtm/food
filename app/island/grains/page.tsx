@@ -148,8 +148,8 @@ export default function GrainsIsland() {
         <TopMenuBar />
 
         {/* Island header section */}
-        <div className="relative w-full bg-gradient-to-r from-[#c8e6c9] to-[#b2ebf2] rounded-b-md overflow-hidden">
-          <img src="/images/3_grainBanner.png" />
+        <div className="relative w-full bg-[#8F5C31] rounded-b-md overflow-hidden pt-4">
+          <img src="/images/GrainsIsland_Header.png" />
         </div>
 
         {/* Guardian introduction */}

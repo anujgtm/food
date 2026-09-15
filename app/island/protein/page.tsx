@@ -145,8 +145,8 @@ export default function ProteinIsland() {
         <TopMenuBar />
 
         {/* Island header section */}
-        <div className="relative w-full bg-gradient-to-r from-[#c8e6c9] to-[#b2ebf2] rounded-b-md overflow-hidden">
-          <img src="/images/5_proteinBanner.png" />
+        <div className="relative w-full bg-[#260B74] rounded-b-md overflow-hidden pt-4">
+          <img src="/images/ProteinIsland_Header.png" />
         </div>
 
         {/* Guardian introduction */}

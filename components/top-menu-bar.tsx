@@ -7,14 +7,14 @@ const menuItems = [
   {
     href: "/",
     label: "Welcome!",
-    color: "#000",
-    buttonClass: "bg-[#000] hover:bg-[#000]",
+    color: "#191919",
+    buttonClass: "bg-[#191919] hover:bg-[#191919]",
   },
   {
     href: "/island/fruit-vegetables",
     label: "Fruit & Vegetables",
-    color: "#C52436",
-    buttonClass: "bg-[#C52436] hover:bg-[#C52436]",
+    color: "#0C5F0F",
+    buttonClass: "bg-[#0C5F0F] hover:bg-[#0C5F0F]",
   },
   {
     href: "/island/grains",

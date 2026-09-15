@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
 import TopMenuBar from "@/components/top-menu-bar"
+import { ScrollHintViewport } from "@/components/scroll-overflow-hint"
 import { useActivity } from "@/context/activity-context"
 
 export default function FruitVegetablesIsland() {
@@ -159,15 +160,14 @@ export default function FruitVegetablesIsland() {
         </div>
 
         {/* Activities section */}
-        <div
-          className="w-full bg-beige rounded-md mt-4 p-6 relative overflow-hidden"
+        <ScrollHintViewport
+          className="w-full bg-beige rounded-md mt-4"
           style={{
             backgroundImage: "url('/images/megaButtonBox_FruitVeg_v01.png')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             height: "720px",
             width: "100%",
-            alignContent: "center",
           }}
         >
           <div className="absolute top-0 left-0 w-full h-2 -bg-gradient-to-r -from-[#f44336] -to-[#8bc34a]"></div>
@@ -287,7 +287,7 @@ export default function FruitVegetablesIsland() {
               </Link>
             </div>
           </div>
-        </div>
+        </ScrollHintViewport>
 
         {/* Footer section */}
         {/*

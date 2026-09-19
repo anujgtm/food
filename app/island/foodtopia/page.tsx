@@ -251,8 +251,8 @@ export default function FoodtopiaIsland() {
           {/* Activity 3 */}
           <div className="flex justify-between items-center bg-[#f5f5f5] rounded-md p-4 border border-gray-200 mb-4">
             <div className="w-1/2">
-              <h3 className="text-dark font-black text-xl">Sugar Sorter gameshow</h3>
-              <p className="text-dark font-black text-xl">Kēmu Whakarōpū Huka</p>
+              <h3 className="text-dark font-black text-xl">Sugar Sorter</h3>
+              <p className="text-dark font-black text-xl">Pūkōmaka Huka</p>
             </div>
 
             <div className="flex gap-4">
@@ -280,8 +280,8 @@ export default function FoodtopiaIsland() {
           {/* Activity 4 */}
           <div className="flex justify-between items-center bg-[#f5f5f5] rounded-md p-4 border border-gray-200">
             <div className="w-1/2">
-              <h3 className="text-dark font-black text-xl">The Final Challenge</h3>
-              <p className="text-dark font-black text-xl">Wero Whakamutunga</p>
+              <h3 className="text-dark font-black text-xl">The Final Showdown</h3>
+              <p className="text-dark font-black text-xl">Whakataetae Whakamutunga</p>
             </div>
 
             <div className="flex gap-4">

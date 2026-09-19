@@ -91,7 +91,7 @@ export default function GrainsQuizActivity() {
         </div>
 
         <div className="bg-beige rounded-md p-8 text-dark">
-          <h1 className="text-4xl font-black mb-6">Mental Workout Challenge</h1>
+          <h1 className="text-4xl font-black mb-6">Sneaky Snail Showdown</h1>
 
           <Card className="mb-8 shadcn-card" ref={targetRef}>
             <CardHeader>

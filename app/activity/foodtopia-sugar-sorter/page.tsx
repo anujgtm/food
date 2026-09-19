@@ -91,7 +91,7 @@ export default function FoodtopiaSugarSorterActivity() {
         </div>
 
         <div className="bg-beige rounded-md p-8 text-dark">
-          <h1 className="text-4xl font-black mb-6">Sugar Sorter Showdown</h1>
+          <h1 className="text-4xl font-black mb-6">Sugar Sorter</h1>
 
           <Card className="mb-8 shadcn-card" ref={targetRef}>
             <CardHeader>
@@ -101,7 +101,7 @@ export default function FoodtopiaSugarSorterActivity() {
               <IframeActivity
                 src="/activities/M6.3%20WEB/story.html"
                 isExternal={true}
-                title="Sugar Sorter Showdown"
+                title="Sugar Sorter"
                 onLoad={handleActivityLoad}
                 onMessage={handleActivityMessage}
                 onComplete={() => handleComplete()}

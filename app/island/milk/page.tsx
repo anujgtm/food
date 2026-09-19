@@ -168,7 +168,7 @@ export default function MilkIsland() {
                 goodness that are scattered across the island.
               </p>
               <p className="text-dark font-extralight mb-4">
-                If you pass the Mental Workout Challenge, you will receive the island's token that will prove to anyone
+                If you pass the Sneaky Snail Showdown, you will receive the island's token that will prove to anyone
                 that you are a Calcium Champion.
               </p>
               <p className="text-dark font-black">Choose an activity to complete.</p>
@@ -279,8 +279,8 @@ export default function MilkIsland() {
           {/* Activity 4 */}
           <div className="flex justify-between items-center bg-[#f5f5f5] rounded-md p-4 border border-gray-200">
             <div className="w-1/2">
-              <h3 className="text-dark font-black text-xl">Mental Workout Challenge</h3>
-              <p className="text-dark font-black text-xl">Wero Hinengaro</p>
+              <h3 className="text-dark font-black text-xl">Sneaky Snail Showdown</h3>
+              <p className="text-dark font-black text-xl">Whakataetae Ngata Mūrere</p>
             </div>
 
             <div className="flex gap-4">

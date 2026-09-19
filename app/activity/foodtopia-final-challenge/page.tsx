@@ -90,7 +90,7 @@ export default function FoodtopiaFinalChallengeActivity() {
         </div>
 
         <div className="bg-beige rounded-md p-8 text-dark">
-          <h1 className="text-4xl font-black mb-6">The Final Challenge</h1>
+          <h1 className="text-4xl font-black mb-6">The Final Showdown</h1>
 
           <Card className="mb-8 shadcn-card" ref={targetRef}>
             <CardHeader>

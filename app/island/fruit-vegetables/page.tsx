@@ -262,8 +262,8 @@ export default function FruitVegetablesIsland() {
           {/* Activity 4 */}
           <div className="flex justify-between items-center bg-[#f5f5f5] rounded-md p-4 border border-gray-200">
             <div className="w-1/2">
-              <h3 className="text-dark font-black text-xl">Mental Workout Challenge</h3>
-              <p className="text-dark font-black text-xl">Wero Hinengaro</p>
+              <h3 className="text-dark font-black text-xl">Sneaky Snail Showdown</h3>
+              <p className="text-dark font-black text-xl">Whakataetae Ngata Mūrere</p>
             </div>
 
             <div className="flex gap-4">

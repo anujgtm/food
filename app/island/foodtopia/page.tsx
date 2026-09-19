@@ -85,6 +85,14 @@ export default function FoodtopiaIsland() {
         item.is_completed,
     )
 
+    const sugarDetectiveCompleted = activityItems.some(
+      (item) =>
+        item.page_slug === "foodtopia" &&
+        item.item_type === "game" &&
+        item.item_name === "sugar-detective" &&
+        item.is_completed,
+    )
+
     const finalChallengeCompleted = activityItems.some(
       (item) =>
         item.page_slug === "foodtopia" &&
@@ -95,7 +103,7 @@ export default function FoodtopiaIsland() {
 
     // All activities must be completed to enable the continue button
     const allCompleted =
-      mealMadnessCompleted && foodGroupSorterCompleted && sugarSorterCompleted && finalChallengeCompleted
+      mealMadnessCompleted && foodGroupSorterCompleted && sugarSorterCompleted && sugarDetectiveCompleted && finalChallengeCompleted
     setAllActivitiesCompleted(allCompleted)
 
     setIsLoading(false)
@@ -184,7 +192,7 @@ export default function FoodtopiaIsland() {
             backgroundImage: "url('/images/megaButtonBox_FruitVeg_v01.png')",
             backgroundSize: "cover",
             backgroundPosition: "center",
-            height: "720px",
+            height: "820px",
             width: "100%",
           }}
         >
@@ -270,6 +278,35 @@ export default function FoodtopiaIsland() {
                 <button
                   className="bg-[#006400] text-light px-6 py-3 rounded-md font-black flex-1 h-full btn-rounded"
                   onClick={() => startActivityItem("foodtopia", "game", "sugar-sorter")}
+                >
+                  Start
+                </button>
+              </Link>
+            </div>
+          </div>
+
+          {/* Activity 3b */}
+          <div className="flex justify-between items-center bg-[#f5f5f5] rounded-md p-4 border border-gray-200 mb-4">
+            <div className="w-1/2">
+              <h3 className="text-dark font-black text-xl">Sugar Detective</h3>
+              <p className="text-dark font-black text-xl">Kaiwhakatewhatewha Huka</p>
+            </div>
+
+            <div className="flex gap-4">
+              <div className="relative h-24 w-64">
+                <Image
+                  src="/images/thumbnail_M6.3.png"
+                  alt="Food bowl"
+                  width={484}
+                  height={183}
+                  className="object-contain rounded-md"
+                />
+              </div>
+
+              <Link href="/activity/foodtopia-sugar-detective" className="w-28 flex">
+                <button
+                  className="bg-[#006400] text-light px-6 py-3 rounded-md font-black flex-1 h-full btn-rounded"
+                  onClick={() => startActivityItem("foodtopia", "game", "sugar-detective")}
                 >
                   Start
                 </button>

@@ -67,7 +67,7 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
       grains: ["grains-intro", "drag-drop", "supermarket-shopper", "mental-workout"],
       milk: ["milk-intro", "drag-drop", "supermarket-shopper", "mental-workout"],
       protein: ["protein-intro", "drag-drop", "supermarket-shopper", "mental-workout"],
-      foodtopia: ["meal-madness", "food-group-sorter", "sugar-sorter", "final-challenge"],
+      foodtopia: ["meal-madness", "food-group-sorter", "sugar-sorter", "sugar-detective", "final-challenge"],
     }
     return activityMap[pageSlug] || []
   }, [])

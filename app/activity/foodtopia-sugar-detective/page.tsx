@@ -29,7 +29,7 @@ export default function FoodtopiaSugarSorterActivity() {
   useEffect(() => {
     // Find the activity item for this game
     const item = activityItems.find(
-      (item) => item.page_slug === "foodtopia" && item.item_type === "game" && item.item_name === "sugar-sorter",
+      (item) => item.page_slug === "foodtopia" && item.item_type === "game" && item.item_name === "sugar-detective",
     )
 
     if (item) {
@@ -52,11 +52,11 @@ export default function FoodtopiaSugarSorterActivity() {
 
   const handleActivityLoad = () => {
     setActivityReady(true)
-    console.log("Sugar sorter activity loaded")
+    console.log("Sugar detective activity loaded")
   }
 
   const handleActivityMessage = (data: any) => {
-    console.log("Message from sugar sorter activity:", data)
+    console.log("Message from sugar detective activity:", data)
 
     // Example of auto-completion through iframe messages
     if (data && typeof data === "object" && data.type === "activity-complete") {
@@ -91,7 +91,7 @@ export default function FoodtopiaSugarSorterActivity() {
         </div>
 
         <div className="bg-beige rounded-md p-8 text-dark">
-          <h1 className="text-4xl font-black mb-6">Sugar Sorter</h1>
+          <h1 className="text-4xl font-black mb-6">Sugar Detective</h1>
 
           <Card className="mb-8 shadcn-card" ref={targetRef}>
             <CardHeader>
@@ -99,16 +99,16 @@ export default function FoodtopiaSugarSorterActivity() {
             </CardHeader>
             <CardContent>
               <IframeActivity
-                src="/activities/M6.3%20WEB/story.html"
+                src="/activities/M6.3b%20WEB/story.html"
                 isExternal={true}
-                title="Sugar Sorter"
+                title="Sugar Detective"
                 onLoad={handleActivityLoad}
                 onMessage={handleActivityMessage}
                 onComplete={() => handleComplete()}
                 className="mb-4"
               />
               <p className="text-dark font-extralight">
-                Sort drinks by their sugar content in this fun gameshow activity. Use your skills to find out how much sugar is in drinks!
+                Search for clues, crack the calculations, and discover how much sugar is in different drinks.
               </p>
             </CardContent>
             <CardFooter className="flex flex-col items-start gap-4">

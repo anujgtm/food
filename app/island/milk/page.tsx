@@ -160,18 +160,15 @@ export default function MilkIsland() {
 
             <div className="w-3/4 pl-8 pb-6">
               <p className="text-dark font-extralight mb-4">
-                Welcome to Milk Products Island, it's here that we make our members sturdy and powerful by providing
-                them with calcium for strong bones and feeding them delicious food and drinks.
+                Welcome to Milk Products Island! Our foods can help <strong>BUILD</strong> a strong body.
               </p>
               <p className="text-dark font-extralight mb-4">
-                Complete the missions around the island, as you go, make sure to keep an eye out for the sources of
-                goodness that are scattered across the island.
+                Milk products provide energy and help you feel full. They are also a good source of calcium, which helps keep our bones and teeth strong.
               </p>
               <p className="text-dark font-extralight mb-4">
-                If you pass the Sneaky Snail Showdown, you will receive the island's token that will prove to anyone
-                that you are a Calcium Champion.
+                Explore the island and complete challenges to become a Calcium Champion! The Sneaky Snail must be stopped!
               </p>
-              <p className="text-dark font-black">Choose an activity to complete.</p>
+              <p className="text-dark font-black mb-4">Choose an activity to begin.</p>
             </div>
           </div>
         </div>

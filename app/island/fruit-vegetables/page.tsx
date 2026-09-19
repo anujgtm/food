@@ -140,21 +140,18 @@ export default function FruitVegetablesIsland() {
 
             <div className="w-3/4 pl-8 pb-6">
               <p className="text-dark font-extralight mb-4">
-                I'm Cassy Rootshine, the Guardian of this island, and I'm here to guide you on your knowledge-seeking
-                journey!
+                Kia ora! I&#39;m Cassy Rootshine, the protector of Foodtopia!
               </p>
               <p className="text-dark font-extralight mb-4">
-                Here at Fruit and Vegetables Island/Motu Huarākau, Huawhenua, we take our job very seriously. We provide
-                much needed vitamins and minerals!
+                Welcome to Fruit and Vegetable Island.
               </p>
               <p className="text-dark font-extralight mb-4">
-                Come and look at what we do here on our island. We'll show you why Foodtopia needs our produce!
+                Fruit and vegetables help protect our bodies from sickness, because they give us vitamins and minerals.
               </p>
               <p className="text-dark font-extralight mb-4">
-                Once you master the knowledge of fruit and vegetables, you can take our token with you on the rest of
-                your adventure.
+                Let&#39;s explore why the people of Foodtopia need our protection foods.
               </p>
-              <p className="text-dark font-black">Choose an activity to complete.</p>
+              <p className="text-dark font-black mb-4">Choose an activity to begin.</p>
             </div>
           </div>
         </div>

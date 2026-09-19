@@ -166,20 +166,17 @@ export default function GrainsIsland() {
             </div>
 
             <div className="w-3/4 pl-8 pb-6">
-              <p className="text-dark font-extralight mb-4">I am Toastina Grainheart, the star of grain foods.</p>
               <p className="text-dark font-extralight mb-4">
-                You have arrived on Grains Island – or, as I like to call it, 'Brains Island' – because grain foods are
-                brain foods! I'll tell you more about that soon.
+                Welcome to Grains Island, We FUEL people!
               </p>
               <p className="text-dark font-extralight mb-4">
-                Well, there is no shortage of things to do on this island. We have lots of activities to keep your brain
-                busy, and plenty of carbohydrates to eat so you don't run out of fuel.
+                Grain foods are brain foods! They give your body energy for playing and your brain energy for learning.<br />
+                <strong>Grains = fuel/energy</strong>
               </p>
               <p className="text-dark font-extralight mb-4">
-                Once you know all about grain foods, take my Grain Foods Challenge. If you pass, I will award you a
-                token.
+                Explore the island to learn more about grain foods and where they come from. My energy boosts will help you defeat the Sneaky Snail!
               </p>
-              <p className="text-dark font-black">Choose an activity to complete.</p>
+              <p className="text-dark font-black mb-4">Choose an activity to begin.</p>
             </div>
           </div>
         </div>

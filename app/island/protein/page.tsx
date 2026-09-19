@@ -164,17 +164,15 @@ export default function ProteinIsland() {
 
             <div className="w-3/4 pl-8 pb-6">
               <p className="text-dark font-extralight mb-4">
-                Welcome! I'm gonna fill you in on the wonders of protein and how it helps me kick butt!
+                Welcome to Protein Island! Protein foods are often called <strong>Build Foods</strong> because they contain the building blocks to repair, GROW and build <strong>ALL</strong> parts of our body, especially muscles!
               </p>
               <p className="text-dark font-extralight mb-4">
-                Let's take a quick lap around the island. You'll see plenty of things that help keep us full, help our
-                growing bodies and build strong muscles. That way, you can become a fearless hero like me!
+                Will you be the next Protein Pro? Explore the island and find out what foods have protein.
               </p>
               <p className="text-dark font-extralight mb-4">
-                Once you know all about how awesome our island is, we'll get you to test your brain and pass a quiz.
-                Then, you'll get a token to show that you're a hero, too – and you can show off to the other islands!
+                Even superheroes need help! Team up with me and beat the Sneaky Snail.
               </p>
-              <p className="text-dark font-black">Choose an activity to complete.</p>
+              <p className="text-dark font-black mb-4">Choose an activity to begin.</p>
             </div>
           </div>
         </div>

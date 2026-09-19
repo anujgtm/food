@@ -156,31 +156,33 @@ export default function FoodtopiaIsland() {
         {/* Guardian introduction */}
         <div className="w-full bg-beige rounded-md mt-4 p-6 pb-0 relative overflow-hidden">
           <div className="flex">
-            <div className="w-1/4 relative">
-              <div className="absolute -left-8 top-0">
-                <div className="relative h-48 w-48">
-                  <Image
-                    src="/images/6_main.png"
-                    alt="Wizard character with staff"
-                    width={192}
-                    height={192}
-                    className="object-contain"
-                  />
-                </div>
-              </div>
+            <div className="w-1/4 relative content-end">              
+              <Image
+                src="/images/6_main.png"
+                alt="Wizard character with staff"
+                width={192}
+                height={192}
+                className="object-contain"
+              />
             </div>
 
             <div className="w-3/4 pl-8 pb-6">
-              <p className="text-dark font-extralight mb-4">
-                Welcome to Foodtopia. Before you travel to the Castle, it's important you prove that you have the
-                knowledge from the four food group islands so you can defeat the Sneaky Snail and help fix the food
-                transportation device.
+              <p className="text-dark font-black mb-4">
+                You did it!
               </p>
               <p className="text-dark font-extralight mb-4">
-                To prove you are worthy, you must help out around the island. There are four activities for you to
-                complete.
+                You've visited all 4 Food Group Islands and collected every token!
               </p>
-              <p className="text-dark font-black">Choose an activity to complete.</p>
+              <p className="text-dark font-extralight mb-4">
+                But Sneaky Snail hasn't been beaten yet...
+              </p>
+              <p className="text-dark font-extralight mb-4">
+                For the final part of your mission, you'll need to use everything you've learned about foods that <strong>fuel, build, and protect</strong> our bodies to outsmart Sneaky Snail and repair the food transportation device.
+              </p>
+              <p className="text-dark font-extralight mb-4">
+                The future of Foodtopia is in your hands!
+              </p>            
+              <p className="text-dark font-black mb-4">Choose a challenge to begin.</p>
             </div>
           </div>
         </div>

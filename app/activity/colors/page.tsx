@@ -89,11 +89,11 @@ export default function ColorsActivity() {
         </div>
 
         <div className="bg-beige rounded-md p-8 text-dark">
-          <h1 className="text-4xl font-black mb-6">Guess the Colours Activity</h1>
+          {/* <h1 className="text-4xl font-black mb-6">Guess the Colours Activity</h1> */}
 
           <Card className="mb-8 shadcn-card" ref={targetRef}>
             <CardHeader>
-              <CardTitle className="text-dark font-black">Match the Colours</CardTitle>
+              <CardTitle className="text-dark font-black">Match the Colours activity</CardTitle>
             </CardHeader>
             <CardContent>
               <IframeActivity
@@ -105,16 +105,16 @@ export default function ColorsActivity() {
                 onComplete={() => handleComplete()}
                 className="mb-4"
               />
-              <p className="text-dark font-extralight">
+              {/* <p className="text-dark font-extralight">
                 Match each item with its correct colour! Click on an item and then click on a colour to create a match.
-              </p>
+              </p> */}
             </CardContent>
-            <CardFooter className="flex flex-col items-start gap-4">
+            {/* <CardFooter className="flex flex-col items-start gap-4">
               {isCompleted && (
                 <Alert className="bg-green-100 border-green-500 w-full">
                   <CheckCircle className="h-4 w-4 text-green-600 mr-2" />
                   <AlertDescription className="text-green-600 font-medium">
-                    {/*Activity completed!{score !== null && ` Your score: ${score}%`} You can play again if you'd like.*/}
+                    {Activity completed!{score !== null && ` Your score: ${score}%`} You can play again if you'd like.}
                     Activity completed! You can play again if you'd like.
                   </AlertDescription>
                 </Alert>
@@ -123,16 +123,16 @@ export default function ColorsActivity() {
                 <Link href="/island/fruit-vegetables">
                   <button className="bg-[#333] text-light px-4 py-2 rounded-md btn-rounded">Back to Island</button>
                 </Link>
-                {/* {!isCompleted && (
+                {!isCompleted && (
                   <button
                     className="bg-[#006400] text-light px-4 py-2 rounded-md btn-rounded"
                     onClick={() => handleComplete()}
                   >
                     Complete Activity
                   </button>
-                )} */}
+                )}
               </div>
-            </CardFooter>
+            </CardFooter> */}
           </Card>
         </div>
       </div>

@@ -91,11 +91,11 @@ export default function FoodtopiaSugarSorterActivity() {
         </div>
 
         <div className="bg-beige rounded-md p-8 text-dark">
-          <h1 className="text-4xl font-black mb-6">Sugar Detective</h1>
+          {/* <h1 className="text-4xl font-black mb-6">Sugar Detective</h1> */}
 
           <Card className="mb-8 shadcn-card" ref={targetRef}>
             <CardHeader>
-              <CardTitle className="text-dark font-black">Learn about Sugar in Drinks</CardTitle>
+              <CardTitle className="text-dark font-black">Sugar Detective</CardTitle>
             </CardHeader>
             <CardContent>
               <IframeActivity
@@ -107,11 +107,11 @@ export default function FoodtopiaSugarSorterActivity() {
                 onComplete={() => handleComplete()}
                 className="mb-4"
               />
-              <p className="text-dark font-extralight">
+              {/* <p className="text-dark font-extralight">
                 Search for clues, crack the calculations, and discover how much sugar is in different drinks.
-              </p>
+              </p> */}
             </CardContent>
-            <CardFooter className="flex flex-col items-start gap-4">
+            {/* <CardFooter className="flex flex-col items-start gap-4">
               {isCompleted && (
                 <Alert className="bg-green-100 border-green-500 w-full">
                   <CheckCircle className="h-4 w-4 text-green-600 mr-2" />
@@ -124,16 +124,16 @@ export default function FoodtopiaSugarSorterActivity() {
                 <Link href="/island/foodtopia">
                   <button className="bg-[#333] text-light px-4 py-2 rounded-md btn-rounded">Back to Island</button>
                 </Link>
-                {/* {!isCompleted && (
+                {!isCompleted && (
                   <button
                     className="bg-[#006400] text-light px-4 py-2 rounded-md btn-rounded"
                     onClick={() => handleComplete()}
                   >
                     Complete Activity
                   </button>
-                )} */}
+                )}
               </div>
-            </CardFooter>
+            </CardFooter> */}
           </Card>
         </div>
       </div>

@@ -88,11 +88,11 @@ export default function MilkIntroPage() {
         </div>
 
         <div className="bg-beige rounded-md p-8 text-dark">
-          <h1 className="text-4xl font-black mb-6">Milk Products Introduction Video</h1>
+          {/* <h1 className="text-4xl font-black mb-6">Milk Products Introduction Video</h1> */}
 
           <Card className="mb-8 shadcn-card" ref={targetRef}>
             <CardHeader>
-              <CardTitle className="text-dark font-black">Learn About Milk Products</CardTitle>
+              <CardTitle className="text-dark font-black">Introduction video: Learn about Milk Products</CardTitle>
             </CardHeader>
             <CardContent>
               {/* Using the Vimeo video ID from the script */}
@@ -105,12 +105,12 @@ export default function MilkIntroPage() {
                 className="mb-4"
                 color="006400" // Using the green color to match the theme
               />
-              <p className="text-dark font-extralight">
+              {/* <p className="text-dark font-extralight">
                 This video introduces you to the importance of milk products and how they provide calcium for strong
                 bones and teeth.
-              </p>
+              </p> */}
             </CardContent>
-            <CardFooter className="flex flex-col items-start gap-4">
+            {/* <CardFooter className="flex flex-col items-start gap-4">
               {isCompleted && (
                 <Alert className="bg-green-100 border-green-500 w-full">
                   <CheckCircle className="h-4 w-4 text-green-600 mr-2" />
@@ -123,16 +123,16 @@ export default function MilkIntroPage() {
                 <Link href="/island/milk">
                   <button className="bg-[#333] text-light px-4 py-2 rounded-md btn-rounded">Back to Island</button>
                 </Link>
-                {/* {!isCompleted && (
+                {!isCompleted && (
                   <button
                     className="bg-[#006400] text-light px-4 py-2 rounded-md btn-rounded"
                     onClick={handleComplete}
                   >
                     Complete Activity
                   </button>
-                )} */}
+                )}
               </div>
-            </CardFooter>
+            </CardFooter> */}
           </Card>
         </div>
       </div>

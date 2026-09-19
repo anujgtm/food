@@ -17,12 +17,12 @@ export default function FoodtopiaFinalChallengeActivity() {
 
   const targetRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    targetRef.current?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  }, []);
+  // useEffect(() => {
+  //   targetRef.current?.scrollIntoView({
+  //     behavior: "smooth",
+  //     block: "start",
+  //   });
+  // }, []);
 
   useEffect(() => {
     // Find the activity item for this quiz

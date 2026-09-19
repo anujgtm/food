@@ -2,59 +2,71 @@ function ExecuteScript(strId)
 {
   switch (strId)
   {
-      case "6rahivixuVW":
+      case "6T1aEwHAC9G":
         Script1();
         break;
-      case "6jm9MnVWIS0":
+      case "69kIyuMh0nD":
         Script2();
         break;
-      case "5ejaPsGSqiu":
+      case "6W0GUBJf7BK":
         Script3();
         break;
-      case "5e1zdZS69gf":
+      case "5YU9Pmur3hq":
         Script4();
         break;
-      case "5xiOw42jXCM":
+      case "5ZaTKrbaie0":
         Script5();
         break;
-      case "5xaw2vg9OPx":
+      case "5cbTC4RHAKQ":
         Script6();
         break;
-      case "6eB2tkZRrIu":
+      case "6q1eNYvVBfD":
         Script7();
         break;
-      case "6r9AwIORjfe":
+      case "6Dy0kW5RrU8":
         Script8();
         break;
-      case "6G2gGdiAa4v":
+      case "5c6VsnZRrwa":
         Script9();
         break;
-      case "63tP7oGgLQL":
+      case "5wsjJy60szk":
         Script10();
         break;
-      case "5kJRKDlxLlt":
+      case "6BU9JSNMcne":
         Script11();
         break;
-      case "6cWtb6zZgGM":
+      case "6O1VwZkg2ln":
         Script12();
         break;
-      case "5afV1D3XFGQ":
+      case "5yjws7pLrJv":
         Script13();
         break;
-      case "6YiiOHPZPip":
+      case "6KLiH2h7CXY":
         Script14();
         break;
-      case "5YrX45jZiyl":
+      case "6ckO0nfpHh8":
         Script15();
         break;
-      case "5byPYiKpn74":
+      case "64kUoAQiCps":
         Script16();
         break;
-      case "60ER9mjIlNy":
+      case "6AQk26o7ooz":
         Script17();
         break;
-      case "5bnBDSbOjlQ":
+      case "5qw2hyEcxNv":
         Script18();
+        break;
+      case "5neN8RMTCBO":
+        Script19();
+        break;
+      case "5Zdo8br9eEd":
+        Script20();
+        break;
+      case "5lTpfAW0sg0":
+        Script21();
+        break;
+      case "5w2kl9Z5QjB":
+        Script22();
         break;
   }
 }
@@ -74,6 +86,9 @@ var showPointer = player.showPointer;
 var hidePointer = player.hidePointer;
 var slideWidth = player.slideWidth;
 var slideHeight = player.slideHeight;
+var getKeyDown = player.getKeyDown;
+var keydown = player.keydown;
+var keyup = player.keyup;
 window.Script1 = function()
 {
   player.once(() => {
@@ -84,11 +99,13 @@ const id = '6ho3npVKa2d';
 const pulseAmount = 0.07;
 const delay = 3792;
 addToTimeline(
-target.animate([
-{ scale: '1' }, { scale: `${1 + pulseAmount}` },
-{ scale: '1' }, { scale: `${1 + pulseAmount}` },
-{ scale: '1' }
-],
+target.animate(
+[ {scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' } ]
+,
   { fill: 'forwards', delay, duration, easing }
 ), id
 );
@@ -104,15 +121,15 @@ const id = '6cAusmTDPV5';
 const shakeAmount = 2;
 player.addForTriggers(
 id,
-target.animate([
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' }
-],
+target.animate(
+[ {translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' } ]
+,
   { fill: 'forwards', duration, easing }
 )
 );
@@ -127,11 +144,13 @@ const id = '6ho3npVKa2d';
 const pulseAmount = 0.07;
 player.addForTriggers(
 id,
-target.animate([
-{ scale: '1' }, { scale: `${1 + pulseAmount}` },
-{ scale: '1' }, { scale: `${1 + pulseAmount}` },
-{ scale: '1' }
-],
+target.animate(
+[ {scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' } ]
+,
   { fill: 'forwards', duration, easing }
 )
 );
@@ -145,17 +164,17 @@ const duration = 750;
 const easing = 'ease-out';
 const id = '6Lf4NvKC0fc';
 const shakeAmount = 5;
-const delay = 2506;
+const delay = 2505.9999;
 addToTimeline(
-target.animate([
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' }
-],
+target.animate(
+[ {translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' } ]
+,
   { fill: 'forwards', delay, duration, easing }
 ), id
 );
@@ -172,15 +191,15 @@ const id = '6DlZe0MnwH9';
 const shakeAmount = 5;
 const delay = 2250;
 addToTimeline(
-target.animate([
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' }
-],
+target.animate(
+[ {translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' } ]
+,
   { fill: 'forwards', delay, duration, easing }
 ), id
 );
@@ -195,17 +214,17 @@ const duration = 750;
 const easing = 'ease-out';
 const id = '6AEpS9MjOEe';
 const shakeAmount = 5;
-const delay = 2381;
+const delay = 2380.9999;
 addToTimeline(
-target.animate([
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' }
-],
+target.animate(
+[ {translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' } ]
+,
   { fill: 'forwards', delay, duration, easing }
 ), id
 );
@@ -220,17 +239,17 @@ const duration = 750;
 const easing = 'ease-out';
 const id = '5jYp4gxRgE9';
 const shakeAmount = 5;
-const delay = 2756;
+const delay = 2755.9999;
 addToTimeline(
-target.animate([
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' }
-],
+target.animate(
+[ {translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' } ]
+,
   { fill: 'forwards', delay, duration, easing }
 ), id
 );
@@ -239,48 +258,44 @@ target.animate([
 
 window.Script8 = function()
 {
+  const target = object('6QmK54LeRJv');
+const duration = 750;
+const easing = 'ease-out';
+const id = '5jvzVDeitWx';
+const pulseAmount = 0.07;
+player.addForTriggers(
+id,
+target.animate(
+[ {scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' } ]
+,
+  { fill: 'forwards', duration, easing }
+)
+);
+}
+
+window.Script9 = function()
+{
   player.once(() => {
 const target = object('6q3a25H64WA');
 const duration = 750;
 const easing = 'ease-out';
 const id = '6Lf4NvKC0fc';
 const shakeAmount = 5;
-const delay = 2506;
+const delay = 2505.9999;
 addToTimeline(
-target.animate([
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' }
-],
-  { fill: 'forwards', delay, duration, easing }
-), id
-);
-});
-}
-
-window.Script9 = function()
-{
-  player.once(() => {
-const target = object('5XOPN5o9psg');
-const duration = 750;
-const easing = 'ease-out';
-const id = '6Lf4NvKC0fc';
-const shakeAmount = 5;
-const delay = 2250;
-addToTimeline(
-target.animate([
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' }
-],
+target.animate(
+[ {translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' } ]
+,
   { fill: 'forwards', delay, duration, easing }
 ), id
 );
@@ -290,22 +305,22 @@ target.animate([
 window.Script10 = function()
 {
   player.once(() => {
-const target = object('6mG2Ryqw68N');
+const target = object('5XOPN5o9psg');
 const duration = 750;
 const easing = 'ease-out';
 const id = '6Lf4NvKC0fc';
 const shakeAmount = 5;
-const delay = 2631;
+const delay = 2250;
 addToTimeline(
-target.animate([
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' }
-],
+target.animate(
+[ {translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' } ]
+,
   { fill: 'forwards', delay, duration, easing }
 ), id
 );
@@ -315,22 +330,22 @@ target.animate([
 window.Script11 = function()
 {
   player.once(() => {
-const target = object('6hoUwYMXfi0');
+const target = object('6mG2Ryqw68N');
 const duration = 750;
 const easing = 'ease-out';
 const id = '6Lf4NvKC0fc';
 const shakeAmount = 5;
-const delay = 2756;
+const delay = 2630.9999;
 addToTimeline(
-target.animate([
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' }
-],
+target.animate(
+[ {translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' } ]
+,
   { fill: 'forwards', delay, duration, easing }
 ), id
 );
@@ -340,22 +355,22 @@ target.animate([
 window.Script12 = function()
 {
   player.once(() => {
-const target = object('6NfvY52joLE');
+const target = object('6hoUwYMXfi0');
 const duration = 750;
 const easing = 'ease-out';
-const id = '6DlZe0MnwH9';
+const id = '6Lf4NvKC0fc';
 const shakeAmount = 5;
-const delay = 2506;
+const delay = 2755.9999;
 addToTimeline(
-target.animate([
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' }
-],
+target.animate(
+[ {translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' } ]
+,
   { fill: 'forwards', delay, duration, easing }
 ), id
 );
@@ -364,48 +379,44 @@ target.animate([
 
 window.Script13 = function()
 {
-  player.once(() => {
-const target = object('5d2INeMZKce');
+  const target = object('5rWiCldmj0R');
 const duration = 750;
 const easing = 'ease-out';
-const id = '6DlZe0MnwH9';
-const shakeAmount = 5;
-const delay = 2250;
-addToTimeline(
-target.animate([
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' }
-],
-  { fill: 'forwards', delay, duration, easing }
-), id
+const id = '5faIDNVvmbp';
+const pulseAmount = 0.07;
+player.addForTriggers(
+id,
+target.animate(
+[ {scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' } ]
+,
+  { fill: 'forwards', duration, easing }
+)
 );
-});
 }
 
 window.Script14 = function()
 {
   player.once(() => {
-const target = object('6OuSuT589PB');
+const target = object('6NfvY52joLE');
 const duration = 750;
 const easing = 'ease-out';
 const id = '6DlZe0MnwH9';
 const shakeAmount = 5;
-const delay = 2381;
+const delay = 2505.9999;
 addToTimeline(
-target.animate([
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' }
-],
+target.animate(
+[ {translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' } ]
+,
   { fill: 'forwards', delay, duration, easing }
 ), id
 );
@@ -415,22 +426,22 @@ target.animate([
 window.Script15 = function()
 {
   player.once(() => {
-const target = object('6jGrsVw5oQp');
+const target = object('5d2INeMZKce');
 const duration = 750;
 const easing = 'ease-out';
 const id = '6DlZe0MnwH9';
 const shakeAmount = 5;
-const delay = 2756;
+const delay = 2250;
 addToTimeline(
-target.animate([
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' }
-],
+target.animate(
+[ {translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' } ]
+,
   { fill: 'forwards', delay, duration, easing }
 ), id
 );
@@ -439,6 +450,77 @@ target.animate([
 
 window.Script16 = function()
 {
+  player.once(() => {
+const target = object('6OuSuT589PB');
+const duration = 750;
+const easing = 'ease-out';
+const id = '6DlZe0MnwH9';
+const shakeAmount = 5;
+const delay = 2380.9999;
+addToTimeline(
+target.animate(
+[ {translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' } ]
+,
+  { fill: 'forwards', delay, duration, easing }
+), id
+);
+});
+}
+
+window.Script17 = function()
+{
+  player.once(() => {
+const target = object('6jGrsVw5oQp');
+const duration = 750;
+const easing = 'ease-out';
+const id = '6DlZe0MnwH9';
+const shakeAmount = 5;
+const delay = 2755.9999;
+addToTimeline(
+target.animate(
+[ {translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' } ]
+,
+  { fill: 'forwards', delay, duration, easing }
+), id
+);
+});
+}
+
+window.Script18 = function()
+{
+  const target = object('5lQUXF8Kgte');
+const duration = 750;
+const easing = 'ease-out';
+const id = '6qNhSyWBxuI';
+const pulseAmount = 0.07;
+player.addForTriggers(
+id,
+target.animate(
+[ {scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' } ]
+,
+  { fill: 'forwards', duration, easing }
+)
+);
+}
+
+window.Script19 = function()
+{
   const target = object('6O0ReR07hf4');
 const duration = 750;
 const easing = 'ease-out';
@@ -446,40 +528,42 @@ const id = '6oZn5pYNSuI';
 const shakeAmount = 2;
 player.addForTriggers(
 id,
-target.animate([
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' }
-],
+target.animate(
+[ {translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' } ]
+,
   { fill: 'forwards', duration, easing }
 )
 );
 }
 
-window.Script17 = function()
+window.Script20 = function()
 {
-  const target = object('5pp0Qdajkuz');
+  const target = object('6kHEUvThTy8');
 const duration = 750;
 const easing = 'ease-out';
-const id = '6LWf490ApQR';
+const id = '6mrlK9aLLnw';
 const pulseAmount = 0.07;
 player.addForTriggers(
 id,
-target.animate([
-{ scale: '1' }, { scale: `${1 + pulseAmount}` },
-{ scale: '1' }, { scale: `${1 + pulseAmount}` },
-{ scale: '1' }
-],
+target.animate(
+[ {scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' } ]
+,
   { fill: 'forwards', duration, easing }
 )
 );
 }
 
-window.Script18 = function()
+window.Script21 = function()
 {
   const target = object('6LM1r0oNgyg');
 const duration = 750;
@@ -488,15 +572,15 @@ const id = '6o13wVwwHDg';
 const shakeAmount = 2;
 player.addForTriggers(
 id,
-target.animate([
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' }
-],
+target.animate(
+[ {translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' } ]
+,
   { fill: 'forwards', duration, easing }
 )
 );

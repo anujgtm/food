@@ -123,14 +123,14 @@ export default function FoodtopiaFoodSorterActivity() {
                 <Link href="/island/foodtopia">
                   <button className="bg-[#333] text-light px-4 py-2 rounded-md btn-rounded">Back to Island</button>
                 </Link>
-                {!isCompleted && (
+                {/* {!isCompleted && (
                   <button
                     className="bg-[#006400] text-light px-4 py-2 rounded-md btn-rounded"
                     onClick={() => handleComplete()}
                   >
                     Complete Activity
                   </button>
-                )}
+                )} */}
               </div>
             </CardFooter>
           </Card>

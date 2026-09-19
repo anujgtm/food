@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest identifier="_6J2bkWa1EVt" version="1.0" xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+  <metadata>
+    <schema>ADL SCORM</schema>
+    <schemaversion>1.2</schemaversion>
+    <lom xmlns="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd">
+      <general>
+        <title>
+          <langstring xml:lang="x-none">Mental Workout Challenge</langstring>
+        </title>
+      </general>
+      <lifecycle>
+        <version>
+          <langstring xml:lang="x-none">1</langstring>
+        </version>
+        <status>
+          <source>
+            <langstring xml:lang="x-none">LOMv1.0</langstring>
+          </source>
+          <value>
+            <langstring xml:lang="x-none">Final</langstring>
+          </value>
+        </status>
+      </lifecycle>
+      <metametadata>
+        <metadatascheme>ADL SCORM 1.2</metadatascheme>
+      </metametadata>
+      <educational>
+        <typicallearningtime>
+          <datetime>PT0H0M0S</datetime>
+        </typicallearningtime>
+      </educational>
+      <rights>
+        <cost>
+          <source>
+            <langstring xml:lang="x-none">LOMv1.0</langstring>
+          </source>
+          <value>
+            <langstring xml:lang="x-none">yes</langstring>
+          </value>
+        </cost>
+        <copyrightandotherrestrictions>
+          <source>
+            <langstring xml:lang="x-none">LOMv1.0</langstring>
+          </source>
+          <value>
+            <langstring xml:lang="x-none">yes</langstring>
+          </value>
+        </copyrightandotherrestrictions>
+      </rights>
+    </lom>
+  </metadata>
+  <organizations default="Mental_Workout_Challenge_ORG">
+    <organization identifier="Mental_Workout_Challenge_ORG">
+      <title>Mental Workout Challenge</title>
+      <item identifier="Mental_Workout_Challenge_SCO" isvisible="true" identifierref="__6J2bkWa1EVt_RES">
+        <title>Mental Workout Challenge</title>
+        <adlcp:masteryscore>100</adlcp:masteryscore>
+      </item>
+    </organization>
+  </organizations>
+  <resources>
+    <resource identifier="__6J2bkWa1EVt_RES" type="webcontent" href="index_lms.html" adlcp:scormtype="sco">
+      <file href="story_content/thumbnail.jpg" />
+      <file href="mobile/5Yb0bZLyBzV.png" />
+      <file href="mobile/6Nl1uRo4JLH.png" />
+      <file href="mobile/5mJOuVu9yPf.png" />
+      <file href="mobile/5Z3jeMyNlrn.png" />
+      <file href="mobile/6ef3OwUTj0m.png" />
+      <file href="mobile/5o1BQVbo6Yf.png" />
+      <file href="mobile/6iEh4uQZvuQ_M_220_220.png" />
+      <file href="mobile/666q5qHTQk8.png" />
+      <file href="mobile/5zmqKg5JYnr.png" />
+      <file href="mobile/6kTH2JuDdBs_M_142_142.png" />
+      <file href="mobile/6p6uJ0isuiF_M_142_142.png" />
+      <file href="mobile/608XUqZIA9W.png" />
+      <file href="mobile/6L5TFQbqQuy.png" />
+      <file href="mobile/6XmakR9h7yH_B-95.png" />
+      <file href="mobile/6XmakR9h7yH.png" />
+      <file href="mobile/6XmakR9h7yH_RG.png" />
+      <file href="mobile/6aDLXz2T4Jj_M_1164_1164.png" />
+      <file href="mobile/6H9CTAZh4Gu_X_M_542_542.png" />
+      <file href="mobile/5ZCArbIJUSx_M_288_288.png" />
+      <file href="mobile/69YsxjRTIv5_X.png" />
+      <file href="mobile/5z1TaVxPSni.png" />
+      <file href="mobile/6aVOFIdIRZG_M_268_268.png" />
+      <file href="mobile/6FXGy2gTAXx_M_500_500.png" />
+      <file href="mobile/6PfFAufj1Vr_M_418_418.png" />
+      <file href="mobile/5Y1wNp58Nlk_X_M_392_392.png" />
+      <file href="mobile/6ZzvG6M5Bj4_M_88_88.png" />
+      <file href="mobile/6dEW78pba2S_M_56_56.png" />
+      <file href="mobile/6R2fYMZV6PT_M_260_260.png" />
+      <file href="meta.xml" />
+      <file href="story_content/triggers.js" />
+      <file href="story_content/user.js" />
+      <file href="mobile/Slide5r3YP924ufe.jpg" />
+      <file href="mobile/Shape6bgp3zbdgUZ.png" />
+      <file href="mobile/Shape5smTGiWYTXR.png" />
+      <file href="mobile/Shape6OY2uhYzpBd.png" />
+      <file href="mobile/Shape6YGgka8hEHw.png" />
+      <file href="mobile/Shape67mhTiULLlw.png" />
+      <file href="mobile/Shape68KCzCcKSzb.png" />
+      <file href="mobile/Shape5feVlegRgqh.png" />
+      <file href="mobile/Shape6S8SFGDn48Q.png" />
+      <file href="mobile/Shape68eK1JThLXy.png" />
+      <file href="mobile/Shape5xnLH0NHvRt.png" />
+      <file href="mobile/Shape60LfjpemDx8.png" />
+      <file href="mobile/Shape67jpv51iuxL.png" />
+      <file href="mobile/Shape5brgyX12SLY.png" />
+      <file href="mobile/Shape5oY1u0F7OJV.png" />
+      <file href="mobile/Shape6maqqTfdlIQ.png" />
+      <file href="mobile/Shape5adVELr4nUy.png" />
+      <file href="mobile/Shape5VDE8Snj4RL.png" />
+      <file href="mobile/Shape6KuzdypzNy2.png" />
+      <file href="html5/data/css/output.min.css" />
+      <file href="html5/data/js/5sGISSnB8Si.js" />
+      <file href="html5/data/js/61cAdb9gkx6.js" />
+      <file href="html5/data/js/69s0L5jt2Xr.js" />
+      <file href="html5/data/js/6CexMB7ApGV.js" />
+      <file href="html5/data/js/6GjvqARM5KK.js" />
+      <file href="html5/data/js/6kweGebARhX.js" />
+      <file href="html5/data/js/6M4A2iGbDwM.js" />
+      <file href="html5/data/js/6qyeiUOdUlY.js" />
+      <file href="html5/data/js/data.js" />
+      <file href="html5/data/js/frame.js" />
+      <file href="html5/data/js/paths.js" />
+      <file href="html5/lib/scripts/bootstrapper.min.js" />
+      <file href="html5/lib/scripts/frame.desktop.min.js" />
+      <file href="html5/lib/scripts/frame.mobile.min.js" />
+      <file href="html5/lib/scripts/slides.min.js" />
+      <file href="html5/lib/stylesheets/desktop.min.css" />
+      <file href="html5/lib/stylesheets/mobile.min.css" />
+      <file href="html5/lib/stylesheets/mobile-fonts/open-sans-bold.woff" />
+      <file href="html5/lib/stylesheets/mobile-fonts/open-sans-light.woff" />
+      <file href="html5/lib/stylesheets/mobile-fonts/open-sans-regular.woff" />
+      <file href="analytics-frame.html" />
+      <file href="story.html" />
+      <file href="index_lms.html" />
+      <file href="lms/AICCComm.html" />
+      <file href="lms/blank.html" />
+      <file href="lms/browsersniff.js" />
+      <file href="lms/goodbye.html" />
+      <file href="lms/scormdriver.js" />
+    </resource>
+  </resources>
+</manifest>

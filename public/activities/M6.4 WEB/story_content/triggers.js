@@ -2,53 +2,56 @@ function ExecuteScript(strId)
 {
   switch (strId)
   {
-      case "5jOtoj4ze4k":
+      case "5kuoAtrtFLe":
         Script1();
         break;
-      case "5tLB63gtEg4":
+      case "5qepeRfrwE5":
         Script2();
         break;
-      case "6rDP6lvJJqR":
+      case "6ii9kccPFY1":
         Script3();
         break;
-      case "5p0zIG5KPy3":
+      case "5VKTfmLtxbf":
         Script4();
         break;
-      case "5pfarWjBzM7":
+      case "6R2z2kb0uiM":
         Script5();
         break;
-      case "6CvAeKdrzbj":
+      case "5q4vzICE5iO":
         Script6();
         break;
-      case "5wEcWsg6zGt":
+      case "6MdAd5RsqoF":
         Script7();
         break;
-      case "5c14gLHAxOe":
+      case "5oY80etKCoD":
         Script8();
         break;
-      case "6YGTdPjpdD8":
+      case "6h9Kekdli0e":
         Script9();
         break;
-      case "5YqpZGgwp5x":
+      case "6nLXmMkNLjk":
         Script10();
         break;
-      case "6ZUZLNjomyC":
+      case "6GQ7KzE0soc":
         Script11();
         break;
-      case "6EgkpOkV4L3":
+      case "5aE44vQrva3":
         Script12();
         break;
-      case "5b5nBMzCHZm":
+      case "5tu235me2ur":
         Script13();
         break;
-      case "6DpTinJpXHA":
+      case "6X8ADLJAdAz":
         Script14();
         break;
-      case "6H8bd1wX8tG":
+      case "5jNZ4zJKhvO":
         Script15();
         break;
-      case "6GpldcW3ULH":
+      case "5odjo7nwd7h":
         Script16();
+        break;
+      case "5aRYvnq4JR1":
+        Script17();
         break;
   }
 }
@@ -68,6 +71,9 @@ var showPointer = player.showPointer;
 var hidePointer = player.hidePointer;
 var slideWidth = player.slideWidth;
 var slideHeight = player.slideHeight;
+var getKeyDown = player.getKeyDown;
+var keydown = player.keydown;
+var keyup = player.keyup;
 window.Script1 = function()
 {
   player.once(() => {
@@ -78,11 +84,13 @@ const id = '6b1rHsrHJZu';
 const pulseAmount = 0.07;
 const delay = 3792;
 addToTimeline(
-target.animate([
-{ scale: '1' }, { scale: `${1 + pulseAmount}` },
-{ scale: '1' }, { scale: `${1 + pulseAmount}` },
-{ scale: '1' }
-],
+target.animate(
+[ {scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' } ]
+,
   { fill: 'forwards', delay, duration, easing }
 ), id
 );
@@ -98,15 +106,15 @@ const id = '6cAusmTDPV5';
 const shakeAmount = 2;
 player.addForTriggers(
 id,
-target.animate([
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' }
-],
+target.animate(
+[ {translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' } ]
+,
   { fill: 'forwards', duration, easing }
 )
 );
@@ -121,11 +129,13 @@ const id = '6b1rHsrHJZu';
 const pulseAmount = 0.07;
 player.addForTriggers(
 id,
-target.animate([
-{ scale: '1' }, { scale: `${1 + pulseAmount}` },
-{ scale: '1' }, { scale: `${1 + pulseAmount}` },
-{ scale: '1' }
-],
+target.animate(
+[ {scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' } ]
+,
   { fill: 'forwards', duration, easing }
 )
 );
@@ -140,11 +150,13 @@ const id = '5jjXfODqE2f';
 const pulseAmount = 0.07;
 player.addForTriggers(
 id,
-target.animate([
-{ scale: '1' }, { scale: `${1 + pulseAmount}` },
-{ scale: '1' }, { scale: `${1 + pulseAmount}` },
-{ scale: '1' }
-],
+target.animate(
+[ {scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' } ]
+,
   { fill: 'forwards', duration, easing }
 )
 );
@@ -159,11 +171,13 @@ const id = '6jZfwuJZo7a';
 const pulseAmount = 0.07;
 player.addForTriggers(
 id,
-target.animate([
-{ scale: '1' }, { scale: `${1 + pulseAmount}` },
-{ scale: '1' }, { scale: `${1 + pulseAmount}` },
-{ scale: '1' }
-],
+target.animate(
+[ {scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' } ]
+,
   { fill: 'forwards', duration, easing }
 )
 );
@@ -178,15 +192,15 @@ const id = '5iWrFYGtDzP';
 const shakeAmount = 2;
 player.addForTriggers(
 id,
-target.animate([
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' }
-],
+target.animate(
+[ {translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' } ]
+,
   { fill: 'forwards', duration, easing }
 )
 );
@@ -201,15 +215,15 @@ const id = '6lfBMkIRQpw';
 const shakeAmount = 2;
 player.addForTriggers(
 id,
-target.animate([
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' }
-],
+target.animate(
+[ {translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' } ]
+,
   { fill: 'forwards', duration, easing }
 )
 );
@@ -224,11 +238,13 @@ const id = '6hTTVJtu7Rs';
 const pulseAmount = 0.07;
 player.addForTriggers(
 id,
-target.animate([
-{ scale: '1' }, { scale: `${1 + pulseAmount}` },
-{ scale: '1' }, { scale: `${1 + pulseAmount}` },
-{ scale: '1' }
-],
+target.animate(
+[ {scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' } ]
+,
   { fill: 'forwards', duration, easing }
 )
 );
@@ -243,11 +259,13 @@ const id = '5isFM208jL5';
 const pulseAmount = 0.07;
 player.addForTriggers(
 id,
-target.animate([
-{ scale: '1' }, { scale: `${1 + pulseAmount}` },
-{ scale: '1' }, { scale: `${1 + pulseAmount}` },
-{ scale: '1' }
-],
+target.animate(
+[ {scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' } ]
+,
   { fill: 'forwards', duration, easing }
 )
 );
@@ -262,11 +280,13 @@ const id = '6aaLqQIzOka';
 const pulseAmount = 0.07;
 player.addForTriggers(
 id,
-target.animate([
-{ scale: '1' }, { scale: `${1 + pulseAmount}` },
-{ scale: '1' }, { scale: `${1 + pulseAmount}` },
-{ scale: '1' }
-],
+target.animate(
+[ {scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' } ]
+,
   { fill: 'forwards', duration, easing }
 )
 );
@@ -274,22 +294,22 @@ target.animate([
 
 window.Script11 = function()
 {
-  const target = object('5ijqj28uajy');
+  const target = object('6oWP3M0tZka');
 const duration = 750;
 const easing = 'ease-out';
-const id = '6TXMr4uyhKM';
+const id = '5bkHbRHR8Vf';
 const shakeAmount = 2;
 player.addForTriggers(
 id,
-target.animate([
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `${shakeAmount}px 0` },
-{ translate: '0 0' },
-{ translate: `-${shakeAmount}px 0` },
-{ translate: '0 0' }
-],
+target.animate(
+[ {translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `${shakeAmount}px 0` }, 
+{translate: '0 0' }, 
+{translate: `-${shakeAmount}px 0` }, 
+{translate: '0 0' } ]
+,
   { fill: 'forwards', duration, easing }
 )
 );
@@ -304,11 +324,13 @@ const id = '5aV5Z6tiqS9';
 const pulseAmount = 0.07;
 player.addForTriggers(
 id,
-target.animate([
-{ scale: '1' }, { scale: `${1 + pulseAmount}` },
-{ scale: '1' }, { scale: `${1 + pulseAmount}` },
-{ scale: '1' }
-],
+target.animate(
+[ {scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' } ]
+,
   { fill: 'forwards', duration, easing }
 )
 );
@@ -323,11 +345,13 @@ const id = '69UT9WfCHw8';
 const pulseAmount = 0.07;
 player.addForTriggers(
 id,
-target.animate([
-{ scale: '1' }, { scale: `${1 + pulseAmount}` },
-{ scale: '1' }, { scale: `${1 + pulseAmount}` },
-{ scale: '1' }
-],
+target.animate(
+[ {scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' } ]
+,
   { fill: 'forwards', duration, easing }
 )
 );
@@ -342,11 +366,13 @@ const id = '63O8G8ngRJ5';
 const pulseAmount = 0.07;
 player.addForTriggers(
 id,
-target.animate([
-{ scale: '1' }, { scale: `${1 + pulseAmount}` },
-{ scale: '1' }, { scale: `${1 + pulseAmount}` },
-{ scale: '1' }
-],
+target.animate(
+[ {scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' } ]
+,
   { fill: 'forwards', duration, easing }
 )
 );
@@ -361,11 +387,13 @@ const id = '6LfqPqV2gwM';
 const pulseAmount = 0.07;
 player.addForTriggers(
 id,
-target.animate([
-{ scale: '1' }, { scale: `${1 + pulseAmount}` },
-{ scale: '1' }, { scale: `${1 + pulseAmount}` },
-{ scale: '1' }
-],
+target.animate(
+[ {scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' } ]
+,
   { fill: 'forwards', duration, easing }
 )
 );
@@ -380,11 +408,13 @@ const id = '69UT9WfCHw8';
 const pulseAmount = 0.07;
 player.addForTriggers(
 id,
-target.animate([
-{ scale: '1' }, { scale: `${1 + pulseAmount}` },
-{ scale: '1' }, { scale: `${1 + pulseAmount}` },
-{ scale: '1' }
-],
+target.animate(
+[ {scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' } ]
+,
   { fill: 'forwards', duration, easing }
 )
 );

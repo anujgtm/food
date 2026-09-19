@@ -113,14 +113,14 @@ export default function ProteinShopperActivity() {
                 <Link href="/island/protein">
                   <button className="bg-[#333] text-light px-4 py-2 rounded-md btn-rounded">Back to Island</button>
                 </Link>
-                {!isCompleted && (
+                {/* {!isCompleted && (
                   <button
                     className="bg-[#006400] text-light px-4 py-2 rounded-md btn-rounded"
                     onClick={handleComplete}
                   >
                     Complete Activity
                   </button>
-                )}
+                )} */}
               </div>
             </CardFooter>
           </Card>

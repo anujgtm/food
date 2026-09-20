@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <!-- Created using Storyline 360 x64 - http://www.articulate.com  -->
-  <!-- version: 3.98.34222.0 -->
-  <title>M6.1 Meal Madness</title>
+  <!-- version: 3.126.38052.0 -->
+  <title>Meal Madness</title>
   <meta http-equiv="x-ua-compatible" content="IE=edge"/>
   <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,shrink-to-fit=no,minimal-ui"/>
   <meta name="apple-mobile-web-app-capable" content="yes"/>
@@ -24,20 +24,20 @@
       tinCanPresent: false,
       cmi5Present: false,
       aoSupport: false,
-      scale: 'noscale',
+      scale: 'Scaled',
       captureRc: false,
       browserSize: 'optimal',
       bgColor: '#282828',
-      features: 'DropInAcc,DropInBase,DropInCore,DropInInteractions,DropInVideo,JsApiBasics,MathExpressions,MorphTransition,MultipleQuizTracking,SetFocusTrigger',
+      features: 'DropInBase,EngagePromiseUpgrade,JsInteractions,Localization,LocalizationImage,PlayerMemoryEnhancements,SlideLevelScale,SlidePromiseUpgrade,StartupPromiseUpgrade',
       themeName: 'unified',
       preloaderColor: '#FFFFFF',
-      suppressAnalytics: true,
+      suppressAnalytics: false,
       productChannel: 'stable',
       publishSource: 'storyline',
-      aid: 'aid|19c2a0c8-bc56-4638-b234-d85c57b0ff0d',
+      aid: 'aid|d9fc18be-42b0-499e-ad9a-c12c813586c0',
       cid: 'a74e3536-7f88-47d3-9ef4-138439e5409d',
-      playerVersion: '3.98.34222.0',
-      publishTimestamp: '2025-05-07T22:02:24.8815614Z',
+      playerVersion: '3.126.38052.0',
+      publishTimestamp: '2026-09-17T18:59:48.8570191Z',
       maxIosVideoElements: 10,
       connectionSettings: { message: 'You%20are%20offline.%20Trying%20to%20reconnect...', useDarkTheme: false, mode: 'disabled' },
       hasFeature: function(feature) {
@@ -62,6 +62,15 @@
       }
 
     };
+
+    if (window.flagsUnderTest != null) {
+      window.globals.features = window.flagsUnderTest.reduce((accum, feature) => {
+        if (!accum.includes(feature)) {
+          accum.push(feature);
+        }
+        return accum;
+      }, window.globals.features.split(',')).join();
+    }
   </script>
   <script>
     var isIe11 = ('ActiveXObject' in window || window.MSBlobBuilder != null)
@@ -73,12 +82,13 @@
   </script>
 
   <script>
-    if (window.globals.hasFeature('NewAiCourseTranslation')) {
+    if (window.globals.hasFeature('Localization')) {
       
       
     }
   </script>
 
+  
   
   <script>window.THREE = { };</script>
   
@@ -142,7 +152,7 @@
   </script>
 
   <div class="mobile-load-title-overlay" style="display: none">
-    <div class="mobile-load-title">M6.1 Meal Madness</div>
+    <div class="mobile-load-title">Meal Madness</div>
   </div>
 
   <div class="mobile-chrome-warning"></div>
@@ -425,7 +435,7 @@
     function disableKeys() {
       if (DS.views && DS.views.nsStack && DS.views.nsStack.length === 1) {
         DS.views.nsStack[0].tabReachable = false
-        DS.views.nsStack[0].updateTabIndex(true, true);
+        DS.views.nsStack[0].updateTabIndex(true);
       }
 
       accStyle.innerHTML = '.acc-shadow-dom { display: none; }';

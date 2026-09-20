@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
 import TopMenuBar from "@/components/top-menu-bar"
+import { ScrollHintViewport } from "@/components/scroll-overflow-hint"
 import { useActivity } from "@/context/activity-context"
 
 export default function FruitVegetablesIsland() {
@@ -120,8 +121,8 @@ export default function FruitVegetablesIsland() {
         <TopMenuBar />
 
         {/* Island header section */}
-        <div className="relative w-full bg-gradient-to-r from-[#c8e6c9] to-[#b2ebf2] rounded-b-md overflow-hidden">
-          <img src="/images/2_fruitNvegBanner.png" />
+        <div className="relative w-full bg-[#0C5F0F] rounded-b-md overflow-hidden pt-4">
+          <img src="/images/FruitAndVegetablesIsland_Header.png" />
         </div>
 
         {/* Guardian introduction */}
@@ -139,35 +140,31 @@ export default function FruitVegetablesIsland() {
 
             <div className="w-3/4 pl-8 pb-6">
               <p className="text-dark font-extralight mb-4">
-                I'm Cassy Rootshine, the Guardian of this island, and I'm here to guide you on your knowledge-seeking
-                journey!
+                Kia ora! I&#39;m Cassy Rootshine, the protector of Foodtopia!
               </p>
               <p className="text-dark font-extralight mb-4">
-                Here at Fruit and Vegetables Island/Motu Huarākau, Huawhenua, we take our job very seriously. We provide
-                much needed vitamins and minerals!
+                Welcome to Fruit and Vegetable Island.
               </p>
               <p className="text-dark font-extralight mb-4">
-                Come and look at what we do here on our island. We'll show you why Foodtopia needs our produce!
+                Fruit and vegetables help protect our bodies from sickness, because they give us vitamins and minerals.
               </p>
               <p className="text-dark font-extralight mb-4">
-                Once you master the knowledge of fruit and vegetables, you can take our token with you on the rest of
-                your adventure.
+                Let&#39;s explore why the people of Foodtopia need our protection foods.
               </p>
-              <p className="text-dark font-black">Choose an activity to complete.</p>
+              <p className="text-dark font-black mb-4">Choose an activity to begin.</p>
             </div>
           </div>
         </div>
 
         {/* Activities section */}
-        <div
-          className="w-full bg-beige rounded-md mt-4 p-6 relative overflow-hidden"
+        <ScrollHintViewport
+          className="w-full bg-beige rounded-md mt-4"
           style={{
             backgroundImage: "url('/images/megaButtonBox_FruitVeg_v01.png')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             height: "720px",
             width: "100%",
-            alignContent: "center",
           }}
         >
           <div className="absolute top-0 left-0 w-full h-2 -bg-gradient-to-r -from-[#f44336] -to-[#8bc34a]"></div>
@@ -262,8 +259,8 @@ export default function FruitVegetablesIsland() {
           {/* Activity 4 */}
           <div className="flex justify-between items-center bg-[#f5f5f5] rounded-md p-4 border border-gray-200">
             <div className="w-1/2">
-              <h3 className="text-dark font-black text-xl">Mental Workout Challenge</h3>
-              <p className="text-dark font-black text-xl">Wero Hinengaro</p>
+              <h3 className="text-dark font-black text-xl">Sneaky Snail Showdown</h3>
+              <p className="text-dark font-black text-xl">Whakataetae Ngata Mūrere</p>
             </div>
 
             <div className="flex gap-4">
@@ -287,7 +284,7 @@ export default function FruitVegetablesIsland() {
               </Link>
             </div>
           </div>
-        </div>
+        </ScrollHintViewport>
 
         {/* Footer section */}
         {/*

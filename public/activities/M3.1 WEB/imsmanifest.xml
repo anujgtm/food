@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest identifier="_5jp3oG3WxFd" version="1.0" xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+  <metadata>
+    <schema>ADL SCORM</schema>
+    <schemaversion>1.2</schemaversion>
+    <lom xmlns="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd">
+      <general>
+        <title>
+          <langstring xml:lang="x-none">How Well Do You Know Your Grains</langstring>
+        </title>
+      </general>
+      <lifecycle>
+        <version>
+          <langstring xml:lang="x-none">1</langstring>
+        </version>
+        <status>
+          <source>
+            <langstring xml:lang="x-none">LOMv1.0</langstring>
+          </source>
+          <value>
+            <langstring xml:lang="x-none">Final</langstring>
+          </value>
+        </status>
+      </lifecycle>
+      <metametadata>
+        <metadatascheme>ADL SCORM 1.2</metadatascheme>
+      </metametadata>
+      <educational>
+        <typicallearningtime>
+          <datetime>PT0H0M0S</datetime>
+        </typicallearningtime>
+      </educational>
+      <rights>
+        <cost>
+          <source>
+            <langstring xml:lang="x-none">LOMv1.0</langstring>
+          </source>
+          <value>
+            <langstring xml:lang="x-none">yes</langstring>
+          </value>
+        </cost>
+        <copyrightandotherrestrictions>
+          <source>
+            <langstring xml:lang="x-none">LOMv1.0</langstring>
+          </source>
+          <value>
+            <langstring xml:lang="x-none">yes</langstring>
+          </value>
+        </copyrightandotherrestrictions>
+      </rights>
+    </lom>
+  </metadata>
+  <organizations default="How_Well_Do_You_Know_Your_Grains_ORG">
+    <organization identifier="How_Well_Do_You_Know_Your_Grains_ORG">
+      <title>How Well Do You Know Your Grains</title>
+      <item identifier="_5jp3oG3WxFd_SCO" isvisible="true" identifierref="__5jp3oG3WxFd_RES">
+        <title>How Well Do You Know Your Grains</title>
+      </item>
+    </organization>
+  </organizations>
+  <resources>
+    <resource identifier="__5jp3oG3WxFd_RES" type="webcontent" href="index_lms.html" adlcp:scormtype="sco">
+      <file href="story_content/thumbnail.jpg" />
+      <file href="mobile/6OZreE5OIwq.png" />
+      <file href="mobile/68vA5FP3kem.png" />
+      <file href="mobile/6K1wd6A1CCQ.png" />
+      <file href="mobile/5zlc8oeZ4Dz.png" />
+      <file href="mobile/6RL04oCdHmN.png" />
+      <file href="mobile/5xcFtFuiXCy.png" />
+      <file href="mobile/666q5qHTQk8.png" />
+      <file href="mobile/6iEh4uQZvuQ_M_220_220.png" />
+      <file href="mobile/5xCqqhrkc0W.png" />
+      <file href="mobile/63txtqjZy4L.png" />
+      <file href="mobile/5sXARLHudeh.png" />
+      <file href="mobile/67NBl7nvt07.png" />
+      <file href="mobile/6YSLwoWbUB6.png" />
+      <file href="mobile/6kTH2JuDdBs_M_142_142.png" />
+      <file href="mobile/6kTH2JuDdBs_X_M_142_142.png" />
+      <file href="mobile/6i9NPq5x9AX.png" />
+      <file href="mobile/6X3LctVDkM7.png" />
+      <file href="mobile/6gSAZgqa7bS_M_110_110.png" />
+      <file href="mobile/67Q4UuxRvNI_M_314_314.png" />
+      <file href="mobile/5s7c0c51WOS_M_206_206.png" />
+      <file href="mobile/5s7c0c51WOS_X_M_206_206.png" />
+      <file href="mobile/5xcFtFuiXCy_X.png" />
+      <file href="mobile/6L2RQyYSJkJ_M_188_188.png" />
+      <file href="mobile/6nDzElVc7US.png" />
+      <file href="mobile/5r4O34ytVhz.png" />
+      <file href="mobile/5jRYWd4bMXF.png" />
+      <file href="mobile/6W77qGz0K65.png" />
+      <file href="mobile/61TIvsCJCsh_M_232_232.png" />
+      <file href="mobile/5oCtAY5aH75.png" />
+      <file href="mobile/67mGnmzjtWW.png" />
+      <file href="mobile/5swdXzzbf8U_M_130_130.png" />
+      <file href="mobile/5dNre6IpKsL_M_126_126.png" />
+      <file href="mobile/5aVnmxJI8ke_M_104_104.png" />
+      <file href="mobile/6iJhhXbDXGM.png" />
+      <file href="mobile/5mBYpnjeNOv.png" />
+      <file href="mobile/6OnWv0wk6Fh.png" />
+      <file href="mobile/5mkpJKyKHWI.png" />
+      <file href="mobile/6aDLXz2T4Jj_M_1164_1164.png" />
+      <file href="mobile/6H9CTAZh4Gu_X_M_542_542.png" />
+      <file href="mobile/5ZCArbIJUSx_M_288_288.png" />
+      <file href="meta.xml" />
+      <file href="story_content/triggers.js" />
+      <file href="story_content/user.js" />
+      <file href="mobile/Slide6dz7VxuBfTi.jpg" />
+      <file href="mobile/Shape6UJpaOWYviv.png" />
+      <file href="mobile/Shape5bsKLqaQn7s.png" />
+      <file href="mobile/Shape6ddpqxqMuZj.png" />
+      <file href="mobile/Shape5UvNmY7omhd.png" />
+      <file href="mobile/Shape5vjPUPJr6HJ.png" />
+      <file href="mobile/Shape6mgc8s1zGmh.png" />
+      <file href="mobile/Shape6M9Q2dEwi8c.png" />
+      <file href="mobile/Shape5tIQ110tPku.png" />
+      <file href="html5/data/css/output.min.css" />
+      <file href="html5/data/js/5UsHOTS5zc4.js" />
+      <file href="html5/data/js/5wwJqLPdT4G.js" />
+      <file href="html5/data/js/5ZSDzUfeBKn.js" />
+      <file href="html5/data/js/69IVo1nuq2N.js" />
+      <file href="html5/data/js/6m4r2ZKyooc.js" />
+      <file href="html5/data/js/6RCssWeAdlM.js" />
+      <file href="html5/data/js/6USRyvnrh5Y.js" />
+      <file href="html5/data/js/data.js" />
+      <file href="html5/data/js/frame.js" />
+      <file href="html5/data/js/paths.js" />
+      <file href="html5/lib/scripts/bootstrapper.min.js" />
+      <file href="html5/lib/scripts/frame.desktop.min.js" />
+      <file href="html5/lib/scripts/frame.mobile.min.js" />
+      <file href="html5/lib/scripts/slides.min.js" />
+      <file href="html5/lib/stylesheets/desktop.min.css" />
+      <file href="html5/lib/stylesheets/mobile.min.css" />
+      <file href="html5/lib/stylesheets/mobile-fonts/open-sans-bold.woff" />
+      <file href="html5/lib/stylesheets/mobile-fonts/open-sans-light.woff" />
+      <file href="html5/lib/stylesheets/mobile-fonts/open-sans-regular.woff" />
+      <file href="analytics-frame.html" />
+      <file href="story.html" />
+      <file href="index_lms.html" />
+      <file href="lms/AICCComm.html" />
+      <file href="lms/blank.html" />
+      <file href="lms/browsersniff.js" />
+      <file href="lms/goodbye.html" />
+      <file href="lms/scormdriver.js" />
+    </resource>
+  </resources>
+</manifest>

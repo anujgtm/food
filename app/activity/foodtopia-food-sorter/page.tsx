@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { useActivity } from "@/context/activity-context"
@@ -16,6 +16,14 @@ export default function FoodtopiaFoodSorterActivity() {
   const [activityReady, setActivityReady] = useState(false)
   const [score, setScore] = useState<number | null>(null)
   const { activityItems, completeActivityItem } = useActivity()
+  const targetRef = useRef<HTMLDivElement>(null);
+
+  // useEffect(() => {
+  //   targetRef.current?.scrollIntoView({
+  //     behavior: "smooth",
+  //     block: "start",
+  //   });
+  // }, []);
 
   useEffect(() => {
     // Find the activity item for this game
@@ -82,11 +90,11 @@ export default function FoodtopiaFoodSorterActivity() {
         </div>
 
         <div className="bg-beige rounded-md p-8 text-dark">
-          <h1 className="text-4xl font-black mb-6">Food Group Sorter Activity</h1>
+          {/* <h1 className="text-4xl font-black mb-6">Food Group Sorter Activity</h1> */}
 
-          <Card className="mb-8 shadcn-card">
+          <Card className="mb-8 shadcn-card" ref={targetRef}>
             <CardHeader>
-              <CardTitle className="text-dark font-black">Sort Foods into Groups</CardTitle>
+              <CardTitle className="text-dark font-black">Food Group Sorter Activity</CardTitle>
             </CardHeader>
             <CardContent>
               <IframeActivity
@@ -98,11 +106,11 @@ export default function FoodtopiaFoodSorterActivity() {
                 onComplete={() => handleComplete()}
                 className="mb-4"
               />
-              <p className="text-dark font-extralight">
+              {/* <p className="text-dark font-extralight">
                 Sort different foods into their correct food groups. Test your knowledge of all the food groups!
-              </p>
+              </p> */}
             </CardContent>
-            <CardFooter className="flex flex-col items-start gap-4">
+            {/* <CardFooter className="flex flex-col items-start gap-4">
               {isCompleted && (
                 <Alert className="bg-green-100 border-green-500 w-full">
                   <CheckCircle className="h-4 w-4 text-green-600 mr-2" />
@@ -124,7 +132,7 @@ export default function FoodtopiaFoodSorterActivity() {
                   </button>
                 )}
               </div>
-            </CardFooter>
+            </CardFooter> */}
           </Card>
         </div>
       </div>

@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { useActivity } from "@/context/activity-context"
@@ -15,6 +15,15 @@ export default function FruitVegetablesIntroPage() {
   const [isCompleted, setIsCompleted] = useState(false)
   const [videoReady, setVideoReady] = useState(false)
   const { activityItems, completeActivityItem, currentSessionId } = useActivity()
+
+  const targetRef = useRef<HTMLDivElement>(null);
+
+  // useEffect(() => {
+  //   targetRef.current?.scrollIntoView({
+  //     behavior: "smooth",
+  //     block: "start",
+  //   });
+  // }, []);
 
   useEffect(() => {
     if (!currentSessionId) return
@@ -82,11 +91,11 @@ export default function FruitVegetablesIntroPage() {
         </div>
 
         <div className="bg-beige rounded-md p-8 text-dark">
-          <h1 className="text-4xl font-black mb-6">Fruit and Vegetables Introduction Video</h1>
+          {/* <h1 className="text-4xl font-black mb-6">Fruit and Vegetables Introduction Video</h1> */}
 
-          <Card className="mb-8 shadcn-card">
+          <Card className="mb-8 shadcn-card" ref={targetRef}>
             <CardHeader>
-              <CardTitle className="text-dark font-black">Learn about Fruit and Vegetables</CardTitle>
+              <CardTitle className="text-dark font-black">Introduction video: Learn about Fruit and Vegetables</CardTitle>
             </CardHeader>
             <CardContent>
               {/* Replace with your actual Vimeo video ID */}
@@ -99,11 +108,11 @@ export default function FruitVegetablesIntroPage() {
                 className="mb-4"
                 color="006400" // Using the green color to match the theme
               />
-              <p className="text-dark font-extralight">
+              {/* <p className="text-dark font-extralight">
                 This video introduces you to the importance of fruits and vegetables in a healthy diet.
-              </p>
+              </p> */}
             </CardContent>
-            <CardFooter className="flex flex-col items-start gap-4">
+            {/* <CardFooter className="flex flex-col items-start gap-4">
               {isCompleted && (
                 <Alert className="bg-green-100 border-green-500 w-full">
                   <CheckCircle className="h-4 w-4 text-green-600 mr-2" />
@@ -123,9 +132,9 @@ export default function FruitVegetablesIntroPage() {
                   >
                     Complete Activity
                   </button>
-                )}
+                )} 
               </div>
-            </CardFooter>
+            </CardFooter> */}
           </Card>
         </div>
       </div>

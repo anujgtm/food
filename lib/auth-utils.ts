@@ -1,6 +1,14 @@
 import { getSupabaseBrowserClient } from "@/lib/supabase"
+import { isSkipDb } from "@/lib/skip-db"
+import { SKIP_DB_USER_ID } from "@/lib/local-activity-store"
+
+const skipDbUser = { id: SKIP_DB_USER_ID } as { id: string }
 
 export const ensureAnonymousAuth = async () => {
+  if (isSkipDb()) {
+    return skipDbUser
+  }
+
   const supabase = getSupabaseBrowserClient()
 
   // Check if user is already authenticated
@@ -26,6 +34,10 @@ export const ensureAnonymousAuth = async () => {
 }
 
 export const getCurrentUserId = async (): Promise<string | null> => {
+  if (isSkipDb()) {
+    return SKIP_DB_USER_ID
+  }
+
   const supabase = getSupabaseBrowserClient()
   const {
     data: { user },

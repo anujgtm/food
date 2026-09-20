@@ -10,6 +10,19 @@ import {
   type ReactNode,
 } from "react"
 import { getSupabaseBrowserClient } from "@/lib/supabase"
+import { isSkipDb } from "@/lib/skip-db"
+import {
+  completeLocalActivity,
+  completeLocalActivityItem,
+  createLocalActivity,
+  findLocalActivityItem,
+  hasLocalPageCompletion,
+  insertLocalActivityItem,
+  insertLocalPageCompletion,
+  loadLocalActivityStore,
+  pageCompletionsMapFromStore,
+  resetLocalActivityStore,
+} from "@/lib/local-activity-store"
 import type { Activity, ActivityItem, PageCompletion } from "@/types/database"
 import { useRouter, usePathname } from "next/navigation"
 
@@ -41,7 +54,8 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
   const [pendingItems, setPendingItems] = useState<Set<string>>(new Set())
   /** Same tick + Strict Mode: React state pending set is async — dedupe in-flight starts here. */
   const startActivityItemInflightRef = useRef<Map<string, Promise<ActivityItem | null>>>(new Map())
-  const supabase = getSupabaseBrowserClient()
+  const skipDb = isSkipDb()
+  const supabase = skipDb ? null : getSupabaseBrowserClient()
   const router = useRouter()
   const pathname = usePathname()
 
@@ -53,7 +67,7 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
       grains: ["grains-intro", "drag-drop", "supermarket-shopper", "mental-workout"],
       milk: ["milk-intro", "drag-drop", "supermarket-shopper", "mental-workout"],
       protein: ["protein-intro", "drag-drop", "supermarket-shopper", "mental-workout"],
-      foodtopia: ["meal-madness", "food-group-sorter", "sugar-sorter", "final-challenge"],
+      foodtopia: ["meal-madness", "food-group-sorter", "sugar-sorter", "sugar-detective", "final-challenge"],
     }
     return activityMap[pageSlug] || []
   }, [])
@@ -81,7 +95,13 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
       if (allPagesCompleted) {
         console.log("All pages completed! Marking entire activity as complete...")
 
-        const { error } = await supabase
+        if (skipDb) {
+          const completed = completeLocalActivity(currentActivity.id)
+          if (completed) setCurrentActivity(completed)
+          return
+        }
+
+        const { error } = await supabase!
           .from("activities")
           .update({
             completed_at: new Date().toISOString(),
@@ -111,13 +131,20 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
     } catch (error) {
       console.error("Error in checkAndCompleteEntireActivity:", error)
     }
-  }, [currentActivity, pageCompletions, getAllExpectedPages, supabase])
+  }, [currentActivity, pageCompletions, getAllExpectedPages, supabase, skipDb])
 
   // Start a new activity session with anonymous authentication
   const startActivity = useCallback(async (): Promise<Activity | null> => {
     try {
+      if (skipDb) {
+        const activity = createLocalActivity()
+        setCurrentActivity(activity)
+        setCurrentSessionId(activity.session_id)
+        return activity
+      }
+
       // Sign in anonymously first
-      const { data: authData, error: authError } = await supabase.auth.signInAnonymously()
+      const { data: authData, error: authError } = await supabase!.auth.signInAnonymously()
 
       if (authError) {
         console.error("Error signing in anonymously:", authError)
@@ -127,7 +154,7 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
       console.log("Signed in anonymously:", authData.user?.id)
 
       // Now create the activity record
-      const { data, error } = await supabase
+      const { data, error } = await supabase!
         .from("activities")
         .insert({
           user_id: authData.user.id,
@@ -151,14 +178,20 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
       console.error("Error in startActivity:", error)
       return null
     }
-  }, [supabase])
+  }, [supabase, skipDb])
 
   // Complete the current activity (manual completion)
   const completeActivity = useCallback(async (): Promise<void> => {
     if (!currentActivity) return
 
     try {
-      const { error } = await supabase
+      if (skipDb) {
+        const completed = completeLocalActivity(currentActivity.id)
+        if (completed) setCurrentActivity(completed)
+        return
+      }
+
+      const { error } = await supabase!
         .from("activities")
         .update({
           completed_at: new Date().toISOString(),
@@ -179,7 +212,7 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
     } catch (error) {
       console.error("Error in completeActivity:", error)
     }
-  }, [currentActivity, supabase])
+  }, [currentActivity, supabase, skipDb])
 
   // Mark all activities as completed for a specific page
   const markAllActivitiesCompleted = useCallback(
@@ -229,7 +262,23 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
           for (const pageVisitItem of pageVisitItems) {
             if (!pageVisitItem.is_completed) {
               console.log(`Completing page visit item ${pageVisitItem.id}`)
-              const { error } = await supabase
+              if (skipDb) {
+                completeLocalActivityItem(pageVisitItem.id)
+                setActivityItems((prev) =>
+                  prev.map((item) =>
+                    item.id === pageVisitItem.id
+                      ? {
+                          ...item,
+                          completed_at: new Date().toISOString(),
+                          is_completed: true,
+                        }
+                      : item,
+                  ),
+                )
+                continue
+              }
+
+              const { error } = await supabase!
                 .from("activity_items")
                 .update({
                   completed_at: new Date().toISOString(),
@@ -257,8 +306,25 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
             }
           }
 
+          if (skipDb) {
+            if (!hasLocalPageCompletion(currentActivity.id, pageSlug)) {
+              insertLocalPageCompletion(currentActivity.id, pageSlug)
+              setPageCompletions((prev) => {
+                const newCompletions = {
+                  ...prev,
+                  [pageSlug]: true,
+                }
+                setTimeout(() => {
+                  checkAndCompleteEntireActivity()
+                }, 100)
+                return newCompletions
+              })
+            }
+            return
+          }
+
           // Mark the page as completed in page_completions table
-          const { data, error } = await supabase
+          const { data, error } = await supabase!
             .from("page_completions")
             .select("*")
             .eq("activity_id", currentActivity.id)
@@ -268,7 +334,7 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
           if (error && error.code === "PGRST116") {
             // No record found, create one
             console.log(`Creating page completion record for ${pageSlug}`)
-            const { error: insertError } = await supabase.from("page_completions").insert({
+            const { error: insertError } = await supabase!.from("page_completions").insert({
               activity_id: currentActivity.id,
               page_slug: pageSlug,
             })
@@ -302,7 +368,7 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
         console.error("Error in markAllActivitiesCompleted:", error)
       }
     },
-    [currentActivity, activityItems, getExpectedActivities, supabase, checkAndCompleteEntireActivity],
+    [currentActivity, activityItems, getExpectedActivities, supabase, checkAndCompleteEntireActivity, skipDb],
   )
 
   // Start a new activity item
@@ -336,7 +402,35 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
             return existingItem
           }
 
-          const { data: dbExistingItems } = await supabase
+          if (skipDb) {
+            const existingLocal = findLocalActivityItem(currentActivity.id, pageSlug, itemType, itemName)
+            const item = existingLocal ?? insertLocalActivityItem({
+              activity_id: currentActivity.id,
+              page_slug: pageSlug,
+              item_type: itemType,
+              item_name: itemName,
+            })
+            setActivityItems((prev) => {
+              const filtered = prev.filter(
+                (entry) =>
+                  !(
+                    entry.activity_id === item.activity_id &&
+                    entry.page_slug === item.page_slug &&
+                    entry.item_type === item.item_type &&
+                    entry.item_name === item.item_name
+                  ),
+              )
+              return [...filtered, item]
+            })
+            setPendingItems((prev) => {
+              const newSet = new Set(prev)
+              newSet.delete(itemKey)
+              return newSet
+            })
+            return item
+          }
+
+          const { data: dbExistingItems } = await supabase!
             .from("activity_items")
             .select("*")
             .eq("activity_id", currentActivity.id)
@@ -374,7 +468,7 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
             item_name: itemName,
           }
 
-          const { data, error } = await supabase.from("activity_items").insert(newItem).select().single()
+          const { data, error } = await supabase!.from("activity_items").insert(newItem).select().single()
 
           if (error) {
             console.error("Error starting activity item:", error)
@@ -413,7 +507,7 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
 
       return run
     },
-    [currentActivity, activityItems, pendingItems, supabase],
+    [currentActivity, activityItems, pendingItems, supabase, skipDb],
   )
 
   // Complete an activity item
@@ -441,7 +535,25 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
           updatePayload.school_name = data.responses[0]?.textAnswer || null;
         }
 
-        const { error } = await supabase
+        if (skipDb) {
+          completeLocalActivityItem(itemId, score, data)
+          setActivityItems((prev) =>
+            prev.map((item) =>
+              item.id === itemId
+                ? {
+                    ...item,
+                    completed_at: new Date().toISOString(),
+                    is_completed: true,
+                    score: score || null,
+                    data: data || null,
+                  }
+                : item,
+            ),
+          )
+          return
+        }
+
+        const { error } = await supabase!
           .from("activity_items")
           .update(updatePayload)
           .eq("id", itemId)
@@ -471,7 +583,7 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
         console.error("Error in completeActivityItem:", error)
       }
     },
-    [supabase],
+    [supabase, skipDb],
   )
 
   // Check if a page is completed
@@ -480,7 +592,11 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
       if (!currentActivity) return false
 
       try {
-        const { data, error } = await supabase
+        if (skipDb) {
+          return hasLocalPageCompletion(currentActivity.id, pageSlug)
+        }
+
+        const { data, error } = await supabase!
           .from("page_completions")
           .select("*")
           .eq("activity_id", currentActivity.id)
@@ -502,7 +618,7 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
         return false
       }
     },
-    [currentActivity, supabase],
+    [currentActivity, supabase, skipDb],
   )
 
   // Mark a page as completed
@@ -515,7 +631,16 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
         const isAlreadyCompleted = await checkPageCompletion(pageSlug)
         if (isAlreadyCompleted) return
 
-        const { error } = await supabase.from("page_completions").insert({
+        if (skipDb) {
+          insertLocalPageCompletion(currentActivity.id, pageSlug)
+          setPageCompletions((prev) => ({
+            ...prev,
+            [pageSlug]: true,
+          }))
+          return
+        }
+
+        const { error } = await supabase!.from("page_completions").insert({
           activity_id: currentActivity.id,
           page_slug: pageSlug,
         })
@@ -533,7 +658,7 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
         console.error("Error in markPageAsCompleted:", error)
       }
     },
-    [currentActivity, checkPageCompletion, supabase],
+    [currentActivity, checkPageCompletion, supabase, skipDb],
   )
 
   // Check if a page is completed (from local state)
@@ -556,13 +681,45 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
     const loadActivityData = async () => {
       setIsLoading(true)
 
+      if (skipDb) {
+        console.info("[skip-db] Skipping Supabase; activity state is stored in this browser session.")
+
+        if (typeof window !== "undefined") {
+          const path = window.location.pathname
+          const nav = performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming | undefined
+          if (path === "/" && nav?.type === "reload") {
+            resetLocalActivityStore()
+            setCurrentActivity(null)
+            setCurrentSessionId(null)
+            setActivityItems([])
+            setPageCompletions({})
+          }
+        }
+
+        const stored = loadLocalActivityStore()
+        if (stored.activity) {
+          setCurrentActivity(stored.activity)
+          setCurrentSessionId(stored.activity.session_id)
+          setActivityItems(stored.items)
+          setPageCompletions(pageCompletionsMapFromStore(stored))
+        } else {
+          const activity = await startActivity()
+          if (activity) {
+            setActivityItems(loadLocalActivityStore().items)
+          }
+        }
+
+        setIsLoading(false)
+        return
+      }
+
       // Hard refresh on home only: abandon current anon session and start fresh (new quiz).
       // Client-side navigation to / does not remount this provider — this block does not run.
       if (typeof window !== "undefined") {
         const path = window.location.pathname
         const nav = performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming | undefined
         if (path === "/" && nav?.type === "reload") {
-          await supabase.auth.signOut()
+          await supabase!.auth.signOut()
           sessionStorage.removeItem("currentSessionId")
           setCurrentActivity(null)
           setCurrentSessionId(null)
@@ -574,13 +731,13 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
       // Check if user is already authenticated
       const {
         data: { user },
-      } = await supabase.auth.getUser()
+      } = await supabase!.auth.getUser()
 
       if (user) {
         console.log("User already authenticated:", user.id)
 
         // Try to load existing activity for this user using user_id field
-        const { data: existingActivity } = await supabase
+        const { data: existingActivity } = await supabase!
           .from("activities")
           .select("*")
           .eq("user_id", user.id) // Use user_id field instead of session_id
@@ -591,7 +748,7 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
           setCurrentSessionId(user.id) // Use user.id as session ID
 
           // Load activity items and page completions...
-          const { data: items } = await supabase
+          const { data: items } = await supabase!
             .from("activity_items")
             .select("*")
             .eq("activity_id", existingActivity.id)
@@ -600,7 +757,7 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
             setActivityItems(items)
           }
 
-          const { data: completions } = await supabase
+          const { data: completions } = await supabase!
             .from("page_completions")
             .select("*")
             .eq("activity_id", existingActivity.id)
@@ -623,7 +780,7 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
 
       if (activity) {
         // Load activity items (should be empty for a new activity)
-        const { data: items } = await supabase.from("activity_items").select("*").eq("activity_id", activity.id)
+        const { data: items } = await supabase!.from("activity_items").select("*").eq("activity_id", activity.id)
 
         if (items) {
           setActivityItems(items)
@@ -634,7 +791,7 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
     }
 
     loadActivityData()
-  }, [startActivity, supabase])
+  }, [startActivity, supabase, skipDb])
 
   return (
     <ActivityContext.Provider

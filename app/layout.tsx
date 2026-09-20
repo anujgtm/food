@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Poppins } from "next/font/google"
 import { ActivityProvider } from "@/context/activity-context"
 import { DevLogGuard } from "@/components/dev-log-guard"
+import { PageScrollHint } from "@/components/scroll-overflow-hint"
 import "./globals.css"
 
 // Load Poppins font with multiple weights
@@ -26,7 +27,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${poppins.variable} font-sans`}>
         <DevLogGuard />
-        <ActivityProvider>{children}</ActivityProvider>
+        <ActivityProvider>
+          <PageScrollHint />
+          {children}
+        </ActivityProvider>
       </body>
     </html>
   )

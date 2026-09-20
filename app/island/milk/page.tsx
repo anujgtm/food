@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
 import TopMenuBar from "@/components/top-menu-bar"
+import { ScrollHintViewport } from "@/components/scroll-overflow-hint"
 import { useActivity } from "@/context/activity-context"
 
 export default function MilkIsland() {
@@ -140,8 +141,8 @@ export default function MilkIsland() {
         <TopMenuBar />
 
         {/* Island header section */}
-        <div className="relative w-full bg-gradient-to-r from-[#c8e6c9] to-[#b2ebf2] rounded-b-md overflow-hidden">
-          <img src="/images/4_milkBannerv2.png" />
+        <div className="relative w-full bg-[#0B4474] rounded-b-md overflow-hidden pt-4">
+          <img src="/images/MilkProductsIsland_Header.png" />
         </div>
 
         {/* Guardian introduction */}
@@ -159,32 +160,28 @@ export default function MilkIsland() {
 
             <div className="w-3/4 pl-8 pb-6">
               <p className="text-dark font-extralight mb-4">
-                Welcome to Milk Products Island, it's here that we make our members sturdy and powerful by providing
-                them with calcium for strong bones and feeding them delicious food and drinks.
+                Welcome to Milk Products Island! Our foods can help <strong>BUILD</strong> a strong body.
               </p>
               <p className="text-dark font-extralight mb-4">
-                Complete the missions around the island, as you go, make sure to keep an eye out for the sources of
-                goodness that are scattered across the island.
+                Milk products provide energy and help you feel full. They are also a good source of calcium, which helps keep our bones and teeth strong.
               </p>
               <p className="text-dark font-extralight mb-4">
-                If you pass the Mental Workout Challenge, you will receive the island's token that will prove to anyone
-                that you are a Calcium Champion.
+                Explore the island and complete challenges to become a Calcium Champion! The Sneaky Snail must be stopped!
               </p>
-              <p className="text-dark font-black">Choose an activity to complete.</p>
+              <p className="text-dark font-black mb-4">Choose an activity to begin.</p>
             </div>
           </div>
         </div>
 
         {/* Activities section */}
-        <div
-          className="w-full bg-beige rounded-md mt-4 p-6 relative overflow-hidden"
+        <ScrollHintViewport
+          className="w-full bg-beige rounded-md mt-4"
           style={{
             backgroundImage: "url('/images/megaButtonBox_FruitVeg_v01.png')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             height: "720px",
             width: "100%",
-            alignContent: "center",
           }}
         >
           <div className="absolute top-0 left-0 w-full h-2"></div>
@@ -279,8 +276,8 @@ export default function MilkIsland() {
           {/* Activity 4 */}
           <div className="flex justify-between items-center bg-[#f5f5f5] rounded-md p-4 border border-gray-200">
             <div className="w-1/2">
-              <h3 className="text-dark font-black text-xl">Mental Workout Challenge</h3>
-              <p className="text-dark font-black text-xl">Wero Hinengaro</p>
+              <h3 className="text-dark font-black text-xl">Sneaky Snail Showdown</h3>
+              <p className="text-dark font-black text-xl">Whakataetae Ngata Mūrere</p>
             </div>
 
             <div className="flex gap-4">
@@ -304,7 +301,7 @@ export default function MilkIsland() {
               </Link>
             </div>
           </div>
-        </div>
+        </ScrollHintViewport>
 
         {/* Footer section */}
         {/*

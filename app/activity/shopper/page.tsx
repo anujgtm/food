@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { useActivity } from "@/context/activity-context"
@@ -15,6 +15,15 @@ export default function ShopperActivity() {
   const [isCompleted, setIsCompleted] = useState(false)
   const [activityReady, setActivityReady] = useState(false)
   const { activityItems, completeActivityItem } = useActivity()
+
+  const targetRef = useRef<HTMLDivElement>(null);
+
+  // useEffect(() => {
+  //   targetRef.current?.scrollIntoView({
+  //     behavior: "smooth",
+  //     block: "start",
+  //   });
+  // }, []);
 
   useEffect(() => {
     // Find the activity item for this game
@@ -70,11 +79,11 @@ export default function ShopperActivity() {
         </div>
 
         <div className="bg-beige rounded-md p-8 text-dark">
-          <h1 className="text-4xl font-black mb-6">Supermarket Shopper Activity</h1>
+          {/* <h1 className="text-4xl font-black mb-6">Supermarket Shopper Activity</h1> */}
 
-          <Card className="mb-8 shadcn-card">
+          <Card className="mb-8 shadcn-card" ref={targetRef}>
             <CardHeader>
-              <CardTitle className="text-dark font-black">Shop for Fruit and Vegetables</CardTitle>
+              <CardTitle className="text-dark font-black">Supermarket Shopper: Fruit and Vegetables</CardTitle>
             </CardHeader>
             <CardContent>
               {/* Replace with your actual activity path or URL */}
@@ -87,11 +96,11 @@ export default function ShopperActivity() {
                 onComplete={handleComplete}
                 className="mb-4"
               />
-              <p className="text-dark font-extralight">
+              {/* <p className="text-dark font-extralight">
                 Shop for fruit and vegetables in this virtual supermarket game. Look out for fresh, canned and frozen options.
-              </p>
+              </p> */}
             </CardContent>
-            <CardFooter className="flex flex-col items-start gap-4">
+            {/* <CardFooter className="flex flex-col items-start gap-4">
               {isCompleted && (
                 <Alert className="bg-green-100 border-green-500 w-full">
                   <CheckCircle className="h-4 w-4 text-green-600 mr-2" />
@@ -113,7 +122,7 @@ export default function ShopperActivity() {
                   </button>
                 )}
               </div>
-            </CardFooter>
+            </CardFooter> */}
           </Card>
         </div>
       </div>

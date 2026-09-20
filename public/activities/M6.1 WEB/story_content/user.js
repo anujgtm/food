@@ -13,6 +13,14 @@ var showPointer = player.showPointer;
 var hidePointer = player.hidePointer;
 var slideWidth = player.slideWidth;
 var slideHeight = player.slideHeight;
+var getKeyDown = player.getKeyDown;
+var keydown = player.keydown;
+var keyup = player.keyup;
+window.Script7 = function()
+{
+  window.parent.postMessage( { type: "activity-complete" }, "*" );
+}
+
 window.Script8 = function()
 {
   var player = GetPlayer();

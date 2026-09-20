@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { useActivity } from "@/context/activity-context"
@@ -16,6 +16,15 @@ export default function FoodtopiaSugarSorterActivity() {
   const [activityReady, setActivityReady] = useState(false)
   const [score, setScore] = useState<number | null>(null)
   const { activityItems, completeActivityItem } = useActivity()
+
+  const targetRef = useRef<HTMLDivElement>(null);
+
+  // useEffect(() => {
+  //   targetRef.current?.scrollIntoView({
+  //     behavior: "smooth",
+  //     block: "start",
+  //   });
+  // }, []);
 
   useEffect(() => {
     // Find the activity item for this game
@@ -82,27 +91,27 @@ export default function FoodtopiaSugarSorterActivity() {
         </div>
 
         <div className="bg-beige rounded-md p-8 text-dark">
-          <h1 className="text-4xl font-black mb-6">Sugar Sorter Showdown</h1>
+          {/* <h1 className="text-4xl font-black mb-6">Sugar Sorter</h1> */}
 
-          <Card className="mb-8 shadcn-card">
+          <Card className="mb-8 shadcn-card" ref={targetRef}>
             <CardHeader>
-              <CardTitle className="text-dark font-black">Learn about Sugar in Drinks</CardTitle>
+              <CardTitle className="text-dark font-black">Sugar Sorter</CardTitle>
             </CardHeader>
             <CardContent>
               <IframeActivity
                 src="/activities/M6.3%20WEB/story.html"
                 isExternal={true}
-                title="Sugar Sorter Showdown"
+                title="Sugar Sorter"
                 onLoad={handleActivityLoad}
                 onMessage={handleActivityMessage}
                 onComplete={() => handleComplete()}
                 className="mb-4"
               />
-              <p className="text-dark font-extralight">
-                Sort drinks by their sugar content in this fun gameshow activity. Use your detective skills to find out how much sugar is in drinks!
-              </p>
+              {/* <p className="text-dark font-extralight">
+                Sort drinks by their sugar content in this fun gameshow activity. Use your skills to find out how much sugar is in drinks!
+              </p> */}
             </CardContent>
-            <CardFooter className="flex flex-col items-start gap-4">
+            {/* <CardFooter className="flex flex-col items-start gap-4">
               {isCompleted && (
                 <Alert className="bg-green-100 border-green-500 w-full">
                   <CheckCircle className="h-4 w-4 text-green-600 mr-2" />
@@ -124,7 +133,7 @@ export default function FoodtopiaSugarSorterActivity() {
                   </button>
                 )}
               </div>
-            </CardFooter>
+            </CardFooter> */}
           </Card>
         </div>
       </div>

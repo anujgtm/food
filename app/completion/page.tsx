@@ -33,6 +33,7 @@ export default function CompletionPage() {
         { page: "foodtopia", type: "game", name: "meal-madness" },
         { page: "foodtopia", type: "game", name: "food-group-sorter" },
         { page: "foodtopia", type: "game", name: "sugar-sorter" },
+        { page: "foodtopia", type: "game", name: "sugar-detective" },
         { page: "foodtopia", type: "quiz", name: "final-challenge" },
       ]}
       redirectTo="/island/foodtopia"

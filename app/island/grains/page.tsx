@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
 import TopMenuBar from "@/components/top-menu-bar"
+import { ScrollHintViewport } from "@/components/scroll-overflow-hint"
 import { useActivity } from "@/context/activity-context"
 
 export default function GrainsIsland() {
@@ -147,8 +148,8 @@ export default function GrainsIsland() {
         <TopMenuBar />
 
         {/* Island header section */}
-        <div className="relative w-full bg-gradient-to-r from-[#c8e6c9] to-[#b2ebf2] rounded-b-md overflow-hidden">
-          <img src="/images/3_grainBanner.png" />
+        <div className="relative w-full bg-[#8F5C31] rounded-b-md overflow-hidden pt-4">
+          <img src="/images/GrainsIsland_Header.png" />
         </div>
 
         {/* Guardian introduction */}
@@ -165,34 +166,30 @@ export default function GrainsIsland() {
             </div>
 
             <div className="w-3/4 pl-8 pb-6">
-              <p className="text-dark font-extralight mb-4">I am Toastina Grainheart, the star of grain foods.</p>
               <p className="text-dark font-extralight mb-4">
-                You have arrived on Grains Island – or, as I like to call it, 'Brains Island' – because grain foods are
-                brain foods! I'll tell you more about that soon.
+                Welcome to Grains Island, We FUEL people!
               </p>
               <p className="text-dark font-extralight mb-4">
-                Well, there is no shortage of things to do on this island. We have lots of activities to keep your brain
-                busy, and plenty of carbohydrates to eat so you don't run out of fuel.
+                Grain foods are brain foods! They give your body energy for playing and your brain energy for learning.<br />
+                <strong>Grains = fuel/energy</strong>
               </p>
               <p className="text-dark font-extralight mb-4">
-                Once you know all about grain foods, take my Grain Foods Challenge. If you pass, I will award you a
-                token.
+                Explore the island to learn more about grain foods and where they come from. My energy boosts will help you defeat the Sneaky Snail!
               </p>
-              <p className="text-dark font-black">Choose an activity to complete.</p>
+              <p className="text-dark font-black mb-4">Choose an activity to begin.</p>
             </div>
           </div>
         </div>
 
         {/* Activities section */}
-        <div
-          className="w-full bg-beige rounded-md mt-4 p-6 relative overflow-hidden"
+        <ScrollHintViewport
+          className="w-full bg-beige rounded-md mt-4"
           style={{
             backgroundImage: "url('/images/megaButtonBox_FruitVeg_v01.png')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             height: "720px",
             width: "100%",
-            alignContent: "center",
           }}
         >
           <div className="absolute top-0 left-0 w-full h-2"></div>
@@ -287,8 +284,8 @@ export default function GrainsIsland() {
           {/* Activity 4 */}
           <div className="flex justify-between items-center bg-[#f5f5f5] rounded-md p-4 border border-gray-200">
             <div className="w-1/2">
-              <h3 className="text-dark font-black text-xl">Mental Workout Challenge</h3>
-              <p className="text-dark font-black text-xl">Wero Hinengaro</p>
+              <h3 className="text-dark font-black text-xl">Sneaky Snail Showdown</h3>
+              <p className="text-dark font-black text-xl">Whakataetae Ngata Mūrere</p>
             </div>
 
             <div className="flex gap-4">
@@ -312,7 +309,7 @@ export default function GrainsIsland() {
               </Link>
             </div>
           </div>
-        </div>
+        </ScrollHintViewport>
 
         {/* Footer section */}
         {/*

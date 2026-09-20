@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
 import TopMenuBar from "@/components/top-menu-bar"
+import { ScrollHintViewport } from "@/components/scroll-overflow-hint"
 import { useActivity } from "@/context/activity-context"
 
 export default function ProteinIsland() {
@@ -144,8 +145,8 @@ export default function ProteinIsland() {
         <TopMenuBar />
 
         {/* Island header section */}
-        <div className="relative w-full bg-gradient-to-r from-[#c8e6c9] to-[#b2ebf2] rounded-b-md overflow-hidden">
-          <img src="/images/5_proteinBanner.png" />
+        <div className="relative w-full bg-[#260B74] rounded-b-md overflow-hidden pt-4">
+          <img src="/images/ProteinIsland_Header.png" />
         </div>
 
         {/* Guardian introduction */}
@@ -163,31 +164,28 @@ export default function ProteinIsland() {
 
             <div className="w-3/4 pl-8 pb-6">
               <p className="text-dark font-extralight mb-4">
-                Welcome! I'm gonna fill you in on the wonders of protein and how it helps me kick butt!
+                Welcome to Protein Island! Protein foods are often called <strong>Build Foods</strong> because they contain the building blocks to repair, GROW and build <strong>ALL</strong> parts of our body, especially muscles!
               </p>
               <p className="text-dark font-extralight mb-4">
-                Let's take a quick lap around the island. You'll see plenty of things that help keep us full, help our
-                growing bodies and build strong muscles. That way, you can become a fearless hero like me!
+                Will you be the next Protein Pro? Explore the island and find out what foods have protein.
               </p>
               <p className="text-dark font-extralight mb-4">
-                Once you know all about how awesome our island is, we'll get you to test your brain and pass a quiz.
-                Then, you'll get a token to show that you're a hero, too – and you can show off to the other islands!
+                Even superheroes need help! Team up with me and beat the Sneaky Snail.
               </p>
-              <p className="text-dark font-black">Choose an activity to complete.</p>
+              <p className="text-dark font-black mb-4">Choose an activity to begin.</p>
             </div>
           </div>
         </div>
 
         {/* Activities section */}
-        <div
-          className="w-full bg-beige rounded-md mt-4 p-6 relative overflow-hidden"
+        <ScrollHintViewport
+          className="w-full bg-beige rounded-md mt-4"
           style={{
             backgroundImage: "url('/images/megaButtonBox_FruitVeg_v01.png')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             height: "720px",
             width: "100%",
-            alignContent: "center",
           }}
         >
           <div className="absolute top-0 left-0 w-full h-2"></div>
@@ -282,8 +280,8 @@ export default function ProteinIsland() {
           {/* Activity 4 */}
           <div className="flex justify-between items-center bg-[#f5f5f5] rounded-md p-4 border border-gray-200">
             <div className="w-1/2">
-              <h3 className="text-dark font-black text-xl">Mental Workout Challenge</h3>
-              <p className="text-dark font-black text-xl">Wero Hinengaro</p>
+              <h3 className="text-dark font-black text-xl">Sneaky Snail Showdown</h3>
+              <p className="text-dark font-black text-xl">Whakataetae Ngata Mūrere</p>
             </div>
 
             <div className="flex gap-4">
@@ -307,7 +305,7 @@ export default function ProteinIsland() {
               </Link>
             </div>
           </div>
-        </div>
+        </ScrollHintViewport>
 
         {/* Footer section */}
         {/*

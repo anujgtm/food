@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { useActivity } from "@/context/activity-context"
@@ -16,6 +16,15 @@ export default function GrainsDragDropActivity() {
   const [activityReady, setActivityReady] = useState(false)
   const [score, setScore] = useState<number | null>(null)
   const { activityItems, completeActivityItem } = useActivity()
+
+  const targetRef = useRef<HTMLDivElement>(null);
+
+  // useEffect(() => {
+  //   targetRef.current?.scrollIntoView({
+  //     behavior: "smooth",
+  //     block: "start",
+  //   });
+  // }, []);
 
   useEffect(() => {
     // Find the activity item for this game
@@ -82,11 +91,11 @@ export default function GrainsDragDropActivity() {
         </div>
 
         <div className="bg-beige rounded-md p-8 text-dark">
-          <h1 className="text-4xl font-black mb-6">How Well Do You Know Your Grains?</h1>
+          {/* <h1 className="text-4xl font-black mb-6">How Well Do You Know Your Grains?</h1> */}
 
-          <Card className="mb-8 shadcn-card">
+          <Card className="mb-8 shadcn-card" ref={targetRef}>
             <CardHeader>
-              <CardTitle className="text-dark font-black">Drag and Drop Activity</CardTitle>
+              <CardTitle className="text-dark font-black">How Well Do You Know Your Grains?</CardTitle>
             </CardHeader>
             <CardContent>
               <IframeActivity
@@ -98,11 +107,11 @@ export default function GrainsDragDropActivity() {
                 onComplete={() => handleComplete()}
                 className="mb-4"
               />
-              <p className="text-dark font-extralight">
+              {/* <p className="text-dark font-extralight">
                 Sort each product from least processed to most processed! Drag the items to their correct positions.
-              </p>
+              </p> */}
             </CardContent>
-            <CardFooter className="flex flex-col items-start gap-4">
+            {/* <CardFooter className="flex flex-col items-start gap-4">
               {isCompleted && (
                 <Alert className="bg-green-100 border-green-500 w-full">
                   <CheckCircle className="h-4 w-4 text-green-600 mr-2" />
@@ -124,7 +133,7 @@ export default function GrainsDragDropActivity() {
                   </button>
                 )}
               </div>
-            </CardFooter>
+            </CardFooter> */}
           </Card>
         </div>
       </div>

@@ -2,7 +2,7 @@ export function HeroSection() {
   return (
     <div>
       <div className="relative w-full bg-[#000000] rounded-md overflow-hidden mt-4">
-        <img src="/images/Welcome_Header.png" />
+        <img src="/images/Welcome_Header-Sad.jpg" />
       </div>
       {/*<div className="relative w-full bg-gradient-to-r from-[#e8f5e9] to-[#c8e6c9] rounded-md overflow-hidden mt-4">
         <div className="relative z-10 p-8 pt-16">

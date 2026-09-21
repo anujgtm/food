@@ -297,7 +297,7 @@ export default function FoodtopiaIsland() {
             <div className="flex gap-4">
               <div className="relative h-24 w-64">
                 <Image
-                  src="/images/thumbnail_M6.3.png"
+                  src="/images/thumbnail_M6.3b.png"
                   alt="Food bowl"
                   width={484}
                   height={183}

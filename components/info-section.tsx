@@ -18,7 +18,7 @@ export function InfoSection() {
           <p className="text-dark font-extralight mb-4">
             The sneaky Snail has damaged the Castle's food transportation device. Without it, food from the four food group islands cannot reach the people of Foodtopia.
           </p>
-          <p className="text-dark font-extralight mb-4">
+          <div className="text-dark font-extralight mb-4">
             Your mission is to:
             <ul className="list-disc pl-5">
               <li>Visit the four Food Group Islands</li>
@@ -26,7 +26,7 @@ export function InfoSection() {
               <li>Collect tokens</li>
               <li>Repair the machine</li>
             </ul>
-          </p>
+          </div>
           <p className="text-dark font-extralight mb-4">
             As you travel, you will learn how food can fuel, build and protect your body.
           </p>

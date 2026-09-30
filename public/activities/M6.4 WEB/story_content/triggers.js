@@ -2,55 +2,55 @@ function ExecuteScript(strId)
 {
   switch (strId)
   {
-      case "5kuoAtrtFLe":
+      case "6GS2GagIyNq":
         Script1();
         break;
-      case "5qepeRfrwE5":
+      case "5oBkDWO3anZ":
         Script2();
         break;
-      case "6ii9kccPFY1":
+      case "5mS2vrvkuaE":
         Script3();
         break;
-      case "5VKTfmLtxbf":
+      case "6TBXt9N1fe5":
         Script4();
         break;
-      case "6R2z2kb0uiM":
+      case "5hG4Ky673zB":
         Script5();
         break;
-      case "5q4vzICE5iO":
+      case "6ZKGUs2BG14":
         Script6();
         break;
-      case "6MdAd5RsqoF":
+      case "5crFnu5Wmik":
         Script7();
         break;
-      case "5oY80etKCoD":
+      case "69JMn2J2R3w":
         Script8();
         break;
-      case "6h9Kekdli0e":
+      case "6Yr5dnGbtGJ":
         Script9();
         break;
-      case "6nLXmMkNLjk":
+      case "6NCQlpxcDH4":
         Script10();
         break;
-      case "6GQ7KzE0soc":
+      case "5bEPaErkm6Q":
         Script11();
         break;
-      case "5aE44vQrva3":
+      case "6SNG897F4t7":
         Script12();
         break;
-      case "5tu235me2ur":
+      case "6HWaetq49Hy":
         Script13();
         break;
-      case "6X8ADLJAdAz":
+      case "6iXkXld97Hs":
         Script14();
         break;
-      case "5jNZ4zJKhvO":
+      case "6BiZqv7w6uD":
         Script15();
         break;
-      case "5odjo7nwd7h":
+      case "5kr2j0dHe2i":
         Script16();
         break;
-      case "5aRYvnq4JR1":
+      case "5aQm8lvAJMd":
         Script17();
         break;
   }
@@ -77,10 +77,10 @@ var keyup = player.keyup;
 window.Script1 = function()
 {
   player.once(() => {
-const target = object('6bgp3zbdgUZ');
+const target = object('5fIG8aQa3kQ');
 const duration = 750;
 const easing = 'ease-out';
-const id = '6b1rHsrHJZu';
+const id = '6ZHCROFd0JM';
 const pulseAmount = 0.07;
 const delay = 3792;
 addToTimeline(
@@ -122,10 +122,10 @@ target.animate(
 
 window.Script3 = function()
 {
-  const target = object('6bgp3zbdgUZ');
+  const target = object('5fIG8aQa3kQ');
 const duration = 750;
 const easing = 'ease-out';
-const id = '6b1rHsrHJZu';
+const id = '6ZHCROFd0JM';
 const pulseAmount = 0.07;
 player.addForTriggers(
 id,

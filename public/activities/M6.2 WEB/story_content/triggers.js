@@ -2,40 +2,40 @@ function ExecuteScript(strId)
 {
   switch (strId)
   {
-      case "5oIHfcarYR3":
+      case "6PCOVB90aq1":
         Script1();
         break;
-      case "6rfQBkyyngs":
+      case "6WIYD3XP9Oz":
         Script2();
         break;
-      case "6r8v7W9IGYz":
+      case "6APhAlo68gC":
         Script3();
         break;
-      case "6fQiFthLTGr":
+      case "6E0WX7WswnO":
         Script4();
         break;
-      case "6fQXGsF8PAv":
+      case "5q7bL6CQr2E":
         Script5();
         break;
-      case "5uxi1kkyvB7":
+      case "5k5itoGXeM0":
         Script6();
         break;
-      case "6Rdp59Cr7r8":
+      case "6jexpJKlDxL":
         Script7();
         break;
-      case "6iqAZxrMmzm":
+      case "5pBappRCSMm":
         Script8();
         break;
-      case "5fum3S2pGrs":
+      case "5vnCHJ9xbJw":
         Script9();
         break;
-      case "6MKcP7SK20g":
+      case "5i4xvBywRjH":
         Script10();
         break;
-      case "5aTC1uJVMIM":
+      case "5bcWrWxlRJw":
         Script11();
         break;
-      case "6KRY8dVrD8o":
+      case "6jcAhzF8Sbq":
         Script12();
         break;
   }
@@ -62,10 +62,10 @@ var keyup = player.keyup;
 window.Script1 = function()
 {
   player.once(() => {
-const target = object('67KGkOg5NcT');
+const target = object('5lFT5kEMQyq');
 const duration = 750;
 const easing = 'ease-out';
-const id = '6ho3npVKa2d';
+const id = '6cQ60SMtvAJ';
 const pulseAmount = 0.07;
 const delay = 3792;
 addToTimeline(
@@ -107,10 +107,10 @@ target.animate(
 
 window.Script3 = function()
 {
-  const target = object('67KGkOg5NcT');
+  const target = object('5lFT5kEMQyq');
 const duration = 750;
 const easing = 'ease-out';
-const id = '6ho3npVKa2d';
+const id = '6cQ60SMtvAJ';
 const pulseAmount = 0.07;
 player.addForTriggers(
 id,

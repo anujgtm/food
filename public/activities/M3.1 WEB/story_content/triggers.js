@@ -2,52 +2,52 @@ function ExecuteScript(strId)
 {
   switch (strId)
   {
-      case "6K0DFvEPuln":
+      case "6l5TIs0jAwi":
         Script1();
         break;
-      case "6Wf4LmyQHpW":
+      case "6WBLWfIUuTP":
         Script2();
         break;
-      case "6HnyA11utyk":
+      case "6geJjzaFIF9":
         Script3();
         break;
-      case "6Oj7qDSvkVS":
+      case "64OT9pjKxz8":
         Script4();
         break;
-      case "5sdjLmeu2Md":
+      case "6qnrx90eipg":
         Script5();
         break;
-      case "6UYdpB8GGB0":
+      case "5vAtu2xF4Zh":
         Script6();
         break;
-      case "5lWveUMQDXT":
+      case "6jfgTpCV9qR":
         Script7();
         break;
-      case "6YCbOr4mn1P":
+      case "5aQd2ActEmm":
         Script8();
         break;
-      case "61iF8WMXnby":
+      case "6ZLX9rGq088":
         Script9();
         break;
-      case "5uH39EdfZ4I":
+      case "6fQ94jilvAX":
         Script10();
         break;
-      case "6PNqWkCgN7i":
+      case "6DCI24IwKxm":
         Script11();
         break;
-      case "6cr1tHNmlQe":
+      case "65vrRWqCXlg":
         Script12();
         break;
-      case "6TiuZhM6Xtl":
+      case "6OWMATjkaPy":
         Script13();
         break;
-      case "6KIjbGBnWlx":
+      case "6NCvZk60705":
         Script14();
         break;
-      case "6hSQqoDeoNh":
+      case "5cgPtta7iw5":
         Script15();
         break;
-      case "5YE7VKRN5T8":
+      case "6d6tWJYfOpH":
         Script16();
         break;
   }
@@ -74,10 +74,10 @@ var keyup = player.keyup;
 window.Script1 = function()
 {
   player.once(() => {
-const target = object('6UJpaOWYviv');
+const target = object('5mCnZkh2o52');
 const duration = 750;
 const easing = 'ease-out';
-const id = '6SodqTNbRWb';
+const id = '6cytoxCNikl';
 const pulseAmount = 0.07;
 const delay = 3792;
 addToTimeline(
@@ -119,10 +119,10 @@ target.animate(
 
 window.Script3 = function()
 {
-  const target = object('6UJpaOWYviv');
+  const target = object('5mCnZkh2o52');
 const duration = 750;
 const easing = 'ease-out';
-const id = '6SodqTNbRWb';
+const id = '6cytoxCNikl';
 const pulseAmount = 0.07;
 player.addForTriggers(
 id,

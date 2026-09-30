@@ -2,94 +2,94 @@ function ExecuteScript(strId)
 {
   switch (strId)
   {
-      case "5dAPxFQ2y23":
+      case "6YqtTvIc6sv":
         Script1();
         break;
-      case "5mBwDcGf4Xu":
+      case "6S9SZM0fjm6":
         Script2();
         break;
-      case "5kg2HCMQCxj":
+      case "5uUXbmIspr0":
         Script3();
         break;
-      case "6mPqtSSmDfm":
+      case "6YcXMDBVFcS":
         Script4();
         break;
-      case "5pm3wDIeCzD":
+      case "5rp7I5ww35n":
         Script5();
         break;
-      case "6qQRYRhGJcV":
+      case "5ZVCH1l70XP":
         Script6();
         break;
-      case "6Eg7ttDI1pB":
+      case "6kTTjS2ETsN":
         Script7();
         break;
-      case "6rng4yDYfEj":
+      case "67EWkGuKbUH":
         Script8();
         break;
-      case "5jzx4gcuMI9":
+      case "5fPXY8SQrkB":
         Script9();
         break;
-      case "5dPktNEgmr0":
+      case "5rOnvp1tLGR":
         Script10();
         break;
-      case "5uWK5ElMtmw":
+      case "6JsBldcbPb8":
         Script11();
         break;
-      case "6b3EiMufknz":
+      case "6PC0K4Rtigo":
         Script12();
         break;
-      case "692lwT3Q7CS":
+      case "5tnjtpOWfnv":
         Script13();
         break;
-      case "66mbFR0UH1J":
+      case "5YlJYXjNjSB":
         Script14();
         break;
-      case "6gVA5uDOMkY":
+      case "6CLxxDVveLi":
         Script15();
         break;
-      case "5omKA2UxciK":
+      case "6YOz4DtZnPI":
         Script16();
         break;
-      case "5n1bEafWLJM":
+      case "6CpF8ea43LG":
         Script17();
         break;
-      case "5aUwIgA5Iu9":
+      case "6b5Nu8vSsBn":
         Script18();
         break;
-      case "6JvIoFactFr":
+      case "5chtFZn0lkf":
         Script19();
         break;
-      case "5j0aMFHCALP":
+      case "5d1cbFLEgD2":
         Script20();
         break;
-      case "6jbwIKOOXhF":
+      case "6gF9zvu4JyV":
         Script21();
         break;
-      case "5c3rP2DrNYh":
+      case "6AEhpHOox04":
         Script22();
         break;
-      case "5cHv9juU7ie":
+      case "6BfCaet8EMl":
         Script23();
         break;
-      case "6MxBO8cBnE3":
+      case "6Ml8jKoTzZP":
         Script24();
         break;
-      case "6a6L0iA45jq":
+      case "5c2o8j6EDot":
         Script25();
         break;
-      case "5XHNpUXPnzm":
+      case "6CjDIOdrKdT":
         Script26();
         break;
-      case "5mKjNAvG1aj":
+      case "5X6HufPH2wx":
         Script27();
         break;
-      case "6btbi4RzbTk":
+      case "5gVyFwmrtCD":
         Script28();
         break;
-      case "6YnceYDq7jq":
+      case "5quLevccvT9":
         Script29();
         break;
-      case "6pUyFmDMegr":
+      case "5ii2LdmbiYX":
         Script30();
         break;
   }
@@ -116,10 +116,10 @@ var keyup = player.keyup;
 window.Script1 = function()
 {
   player.once(() => {
-const target = object('62EOGoiFkqj');
+const target = object('61rnXEVNPhI');
 const duration = 750;
 const easing = 'ease-out';
-const id = '6lgRby23kJQ';
+const id = '5pj3KQRMNFz';
 const pulseAmount = 0.07;
 const delay = 3792;
 addToTimeline(
@@ -161,10 +161,10 @@ target.animate(
 
 window.Script3 = function()
 {
-  const target = object('62EOGoiFkqj');
+  const target = object('5ZaqgLm5Ift');
 const duration = 750;
 const easing = 'ease-out';
-const id = '6lgRby23kJQ';
+const id = '67VpEzyeaLx';
 const pulseAmount = 0.07;
 player.addForTriggers(
 id,
@@ -182,10 +182,10 @@ target.animate(
 
 window.Script4 = function()
 {
-  const target = object('5ZaqgLm5Ift');
+  const target = object('61rnXEVNPhI');
 const duration = 750;
 const easing = 'ease-out';
-const id = '67VpEzyeaLx';
+const id = '5pj3KQRMNFz';
 const pulseAmount = 0.07;
 player.addForTriggers(
 id,

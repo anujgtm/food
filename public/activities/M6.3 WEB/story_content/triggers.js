@@ -2,67 +2,67 @@ function ExecuteScript(strId)
 {
   switch (strId)
   {
-      case "5bY58VEMlOO":
+      case "5haYAmyFNCq":
         Script1();
         break;
-      case "6iXP6CjoRhq":
+      case "5j9zymTe8YF":
         Script2();
         break;
-      case "6DGveywcGWh":
+      case "6WiSAiDOni9":
         Script3();
         break;
-      case "69KXh4j0OGL":
+      case "6n0gT1LDv60":
         Script4();
         break;
-      case "6r0OlCQAjs6":
+      case "6rJb1CNBHZp":
         Script5();
         break;
-      case "6c5SMnxYI2K":
+      case "6iRqj0aiTO6":
         Script6();
         break;
-      case "6OciL6ddMfG":
+      case "6MZd1cVx7gx":
         Script7();
         break;
-      case "6eSAWn7OlC6":
+      case "5ft6jr2BxXL":
         Script8();
         break;
-      case "6c7BpYfWIiE":
+      case "6NzCOAKErxL":
         Script9();
         break;
-      case "6pUPlX1q5Mi":
+      case "5i7GhTvZUlV":
         Script10();
         break;
-      case "6fVEvIeYP5n":
+      case "5hXm7w9ejfC":
         Script11();
         break;
-      case "5m812Bs5Q18":
+      case "5jQNNBCMjFX":
         Script12();
         break;
-      case "6liOdoyvAUf":
+      case "6fmgOheDHuC":
         Script13();
         break;
-      case "68frRyQj8Um":
+      case "5vhTs9GNJyF":
         Script14();
         break;
-      case "5alsqMkvWBo":
+      case "5mwAFNFIL22":
         Script15();
         break;
-      case "5rkAELZrF85":
+      case "6Cav87EnGL8":
         Script16();
         break;
-      case "6mHB9kJqTLk":
+      case "6n3Gw9IkKSr":
         Script17();
         break;
-      case "5Z8Wh1NpFH9":
+      case "6H7pYKYv1DT":
         Script18();
         break;
-      case "6kHLHImSoRo":
+      case "6KHu94bCgUu":
         Script19();
         break;
-      case "6GUxT2dZyMy":
+      case "5hlWFbsZX2W":
         Script20();
         break;
-      case "5qOD9jkNjzn":
+      case "64gsFRBAY9C":
         Script21();
         break;
   }
@@ -89,10 +89,10 @@ var keyup = player.keyup;
 window.Script1 = function()
 {
   player.once(() => {
-const target = object('6B7rylPfUfr');
+const target = object('5wRyGeYfgpw');
 const duration = 750;
 const easing = 'ease-out';
-const id = '6ho3npVKa2d';
+const id = '5sgUqme4l4n';
 const pulseAmount = 0.07;
 const delay = 3792;
 addToTimeline(
@@ -134,10 +134,10 @@ target.animate(
 
 window.Script3 = function()
 {
-  const target = object('6B7rylPfUfr');
+  const target = object('5wRyGeYfgpw');
 const duration = 750;
 const easing = 'ease-out';
-const id = '6ho3npVKa2d';
+const id = '5sgUqme4l4n';
 const pulseAmount = 0.07;
 player.addForTriggers(
 id,

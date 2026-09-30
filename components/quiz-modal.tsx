@@ -106,7 +106,8 @@ export function QuizModal({ onComplete }: QuizModalProps) {
       setTextAnswer("")
       setSelectedOption(null)
     } else {
-      setShowResults(true)
+      handleFinish();
+      //setShowResults(true)
 
       // Complete the activity item and store responses in Supabase
       if (activityItemId) {

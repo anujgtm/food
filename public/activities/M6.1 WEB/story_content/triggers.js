@@ -2,37 +2,37 @@ function ExecuteScript(strId)
 {
   switch (strId)
   {
-      case "6WzOAaHuRT3":
+      case "6654LBxMMzv":
         Script1();
         break;
-      case "6PaQDsdkPDL":
+      case "6QVwpZfCx50":
         Script2();
         break;
-      case "5h7hInWy42W":
+      case "6qAW1Mf6ii3":
         Script3();
         break;
-      case "6Pwdfvvd1kW":
+      case "646U4hAAhCI":
         Script4();
         break;
-      case "6GAWUO4cXyb":
+      case "6mod85rAaQT":
         Script5();
         break;
-      case "6RL3B5Ntzni":
+      case "6OSwppxTS54":
         Script6();
         break;
-      case "6UYJpgDjyjw":
+      case "5mVGQccswqL":
         Script7();
         break;
-      case "6PTwPq82WnJ":
+      case "5iDS3R0rdiI":
         Script8();
         break;
-      case "6lR6E3doSWY":
+      case "5t0T5Pv4lID":
         Script9();
         break;
-      case "5hppCqTGtHf":
+      case "6fLiDYTSxY8":
         Script10();
         break;
-      case "6RYJiMIBJnE":
+      case "6VweSUD76Ne":
         Script11();
         break;
   }
@@ -59,10 +59,10 @@ var keyup = player.keyup;
 window.Script1 = function()
 {
   player.once(() => {
-const target = object('6B7rylPfUfr');
+const target = object('658N6lGT4kM');
 const duration = 750;
 const easing = 'ease-out';
-const id = '6ho3npVKa2d';
+const id = '5p0BIO7UwSu';
 const pulseAmount = 0.07;
 const delay = 3792;
 addToTimeline(
@@ -104,10 +104,10 @@ target.animate(
 
 window.Script3 = function()
 {
-  const target = object('6B7rylPfUfr');
+  const target = object('658N6lGT4kM');
 const duration = 750;
 const easing = 'ease-out';
-const id = '6ho3npVKa2d';
+const id = '5p0BIO7UwSu';
 const pulseAmount = 0.07;
 player.addForTriggers(
 id,

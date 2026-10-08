@@ -17,10 +17,7 @@ export default function NextIsland() {
     >
       <main className="min-h-screen bg-black text-white flex flex-col items-center">
         <div className="w-full max-w-5xl mx-auto p-4">
-          <div className="flex justify-between items-center w-full mb-8">
-            <Link href="/island/fruit-vegetables">
-              <button className="bg-[#333] text-light px-4 py-2 rounded-md font-black">Back to Fruit Island</button>
-            </Link>
+          <div className="flex justify-end items-center w-full mb-8">
             <div className="relative h-10 w-16">
               <Image
                 src="/placeholder.svg?height=40&width=64"
@@ -40,6 +37,12 @@ export default function NextIsland() {
             <Link href="/">
               <button className="bg-[#006400] text-light px-6 py-3 rounded-md font-black">Back to Home</button>
             </Link>
+          
+            <div className="flex justify-end mt-4">
+              <Link href="/island/fruit-vegetables">
+                <button className="bg-[#333] text-light px-4 py-2 rounded-md font-black">Back to Fruit Island</button>
+              </Link>
+            </div>
           </div>
         </div>
       </main>

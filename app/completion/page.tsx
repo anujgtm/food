@@ -40,10 +40,7 @@ export default function CompletionPage() {
     >
       <main className="min-h-screen bg-black text-white flex flex-col items-center">
         <div className="w-full max-w-5xl mx-auto p-4">
-          <div className="flex justify-between items-center w-full mb-8">
-            <Link href="/">
-              <button className="bg-[#333] text-light px-4 py-2 rounded-md font-black btn-rounded">Back to Home</button>
-            </Link>
+          <div className="flex justify-end items-center w-full mb-8">
             <div className="relative h-10 w-16">
               <Image
                 src="/abstract-brain-bulb.png"
@@ -93,6 +90,12 @@ export default function CompletionPage() {
                 </Link>
               </CardFooter>
             </Card>
+          
+            <div className="flex justify-end mt-4">
+              <Link href="/">
+                <button className="bg-[#333] text-light px-4 py-2 rounded-md font-black btn-rounded">Back to Home</button>
+              </Link>
+            </div>
           </div>
         </div>
       </main>
